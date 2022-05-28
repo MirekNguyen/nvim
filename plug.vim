@@ -38,7 +38,7 @@ Plug 'rafamadriz/friendly-snippets'
 
 " LSP other 
 Plug 'onsails/lspkind.nvim'
-Plug 'glepnir/lspsaga.nvim'
+"Plug 'glepnir/lspsaga.nvim'
 
 " Autopairs
 Plug 'windwp/nvim-autopairs'
@@ -53,4 +53,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'kyazdani42/nvim-web-devicons' " Add icons to telescope
 
+Plug 'ray-x/lsp_signature.nvim'
+Plug 'tami5/lspsaga.nvim'
 call plug#end()

@@ -5,6 +5,7 @@ set shiftwidth=3
 set mouse=a "mouse in vim
 set number
 set ignorecase "search in vim using '/' no case sensitive
+set clipboard+=unnamedplus
 " set tabstop=3 "setting tab width
 " set paste " don't mess up the indenting of pasted text
 
