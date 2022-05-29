@@ -1,4 +1,5 @@
 runtime ./plug.vim "include plugins
+runtime ./setup.vim
 "set nvim§
 syntax on
 set shiftwidth=3
