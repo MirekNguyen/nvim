@@ -1,4 +1,6 @@
 lua << EOF
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 local on_attach = function(client, bufnr)
    local map = vim.api.nvim_buf_set_keymap
 map(0, "n", "gr", "<cmd>Lspsaga rename<cr>", {silent = true, noremap = true})
@@ -18,8 +20,9 @@ local servers = { 'clangd', 'html', 'grammarly', 'cssls'  }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup { 
      on_attach = on_attach,
+     capabilities = capabilities
      }
 end
-require('lspconfig').tsserver.setup {on_attach = on_attach, root_dir = vim.loop.cwd }
-require('lspconfig').emmet_ls.setup {on_attach = on_attach, root_dir = vim.loop.cwd }
+require('lspconfig').tsserver.setup {on_attach = on_attach, capabilities = capabilities, root_dir = vim.loop.cwd }
+require('lspconfig').emmet_ls.setup {on_attach = on_attach, capabilities = capabilities, root_dir = vim.loop.cwd }
 EOF
