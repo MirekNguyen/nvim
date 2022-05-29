@@ -18,10 +18,10 @@ let g:airline_theme='gruvbox'
 let g:snipMate = { 'snippet_version' : 1 }
 
 " NerdTree keymaps
-nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <C-s> :NERDTreeFind<CR>
 
 nnoremap  <silent> ff <cmd>lua require('telescope.builtin').find_files()<cr>
 
