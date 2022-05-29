@@ -19,15 +19,17 @@ let g:airline_theme='gruvbox'
 let g:snipMate = { 'snippet_version' : 1 }
 
 " NerdTree keymaps
-nnoremap <C-f> :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-s> :NERDTreeFind<CR>
+nnoremap <C-f> :NvimTreeFocus<CR>
+nnoremap <C-l> :NvimTreeToggle<CR>
+nnoremap <C-s> :NvimTreeFindFile<CR>
 
 nnoremap  <silent> ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <silent>fg <cmd>Telescope live_grep<cr>
+nnoremap <silent>fb <cmd>Telescope buffers<cr>
+nnoremap <silent>fh <cmd>Telescope help_tags<cr>
 
 " vscode-like completion highlight
-"set termguicolors
+set termguicolors
 " gray
 highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
 " blue
@@ -44,3 +46,4 @@ highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
 highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
+

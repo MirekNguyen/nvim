@@ -6,9 +6,9 @@ local has_words_before = function()
 end
 
 local luasnip = require("luasnip")
+local lspkind = require('lspkind')
 -- Setup nvim-cmp.
 local cmp = require'cmp'
-local lspkind = require('lspkind')
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
@@ -18,6 +18,24 @@ local lspkind = require('lspkind')
         -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       end,
     },
+   formatting = {
+     format = lspkind.cmp_format({
+       mode = "text_symbol",
+       menu = ({
+	 buffer = "[Buffer]",
+	 nvim_lsp = "[LSP]",
+	 luasnip = "[LuaSnip]",
+	 nvim_lua = "[Lua]",
+	 latex_symbols = "[Latex]",
+       })
+     }),
+   },
+     sources = {
+       { name = "nvim_lsp" },
+       { name = "luasnip" },
+       { name = "buffer" },
+       { name = "path" },
+     },
     window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
@@ -51,27 +69,5 @@ local lspkind = require('lspkind')
       end
     end, { "i", "s" }),
    }),
-
-formatting = {
-  format = lspkind.cmp_format({
-    mode = "symbol_text",
-    menu = ({
-      buffer = "[Buffer]",
-      nvim_lsp = "[LSP]",
-      luasnip = "[LuaSnip]",
-      nvim_lua = "[Lua]",
-      latex_symbols = "[Latex]",
-    })
-  }),
-},
-
-
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "buffer" },
-    { name = "path" },
-  },
-    })
-
+})
 EOF

@@ -33,8 +33,7 @@ Plug 'hrsh7th/nvim-cmp'
 " LSP cmp = snippets
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'rafamadriz/friendly-snippets'
-"Plug 'SirVer/ultisnips'
+Plug 'rafamadriz/friendly-snippets' "Plug 'SirVer/ultisnips'
 "Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 " LSP other 
@@ -56,4 +55,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'kyazdani42/nvim-web-devicons' " Add icons to telescope
 
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+Plug 'glepnir/dashboard-nvim'
+Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
