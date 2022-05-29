@@ -13,6 +13,7 @@ Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin' "NerdTree git differences
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " NerdTree colors
 Plug 'ryanoasis/vim-devicons' " NerdTree icons
+Plug 'romgrk/barbar.nvim'
 
 "Navigation 
 Plug 'christoomey/vim-tmux-navigator'
@@ -38,10 +39,12 @@ Plug 'rafamadriz/friendly-snippets'
 
 " LSP other 
 Plug 'onsails/lspkind.nvim'
-"Plug 'glepnir/lspsaga.nvim'
+Plug 'ray-x/lsp_signature.nvim'
+Plug 'tami5/lspsaga.nvim'
 
-" Autopairs
+" Text editing, autopairs 
 Plug 'windwp/nvim-autopairs'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Snipmate
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -53,6 +56,4 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'kyazdani42/nvim-web-devicons' " Add icons to telescope
 
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'tami5/lspsaga.nvim'
 call plug#end()

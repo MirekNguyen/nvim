@@ -1,8 +1,4 @@
 lua << EOF
-require('nvim-autopairs').setup{}
-require("luasnip.loaders.from_vscode").lazy_load()
-require("luasnip.loaders.from_snipmate").lazy_load()
-require('lspconfig').tsserver.setup {on_attach = custom_attach, root_dir = vim.loop.cwd }
 local on_attach = function(client, bufnr)
    local map = vim.api.nvim_buf_set_keymap
 map(0, "n", "gr", "<cmd>Lspsaga rename<cr>", {silent = true, noremap = true})
@@ -24,4 +20,6 @@ for _, lsp in pairs(servers) do
      on_attach = on_attach,
      }
 end
+require('lspconfig').tsserver.setup {on_attach = on_attach, root_dir = vim.loop.cwd }
+require('lspconfig').emmet_ls.setup {on_attach = on_attach, root_dir = vim.loop.cwd }
 EOF
