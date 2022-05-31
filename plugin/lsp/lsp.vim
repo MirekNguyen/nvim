@@ -24,5 +24,9 @@ for _, lsp in pairs(servers) do
      }
 end
 require('lspconfig').tsserver.setup {on_attach = on_attach, capabilities = capabilities, root_dir = vim.loop.cwd }
-require('lspconfig').emmet_ls.setup {on_attach = on_attach, capabilities = capabilities, root_dir = vim.loop.cwd }
+require('lspconfig').emmet_ls.setup({
+     on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+})
 EOF

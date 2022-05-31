@@ -1,6 +1,7 @@
 runtime ./plug.vim "include plugins
 runtime ./setup.vim
-"set nvimÂ§
+runtime ./map.vim
+"set nvim¬§
 syntax on
 set shiftwidth=3
 set mouse=a "mouse in vim
@@ -17,16 +18,6 @@ let g:airline_theme='gruvbox'
 
 " SnipMate snippets autocomplete
 let g:snipMate = { 'snippet_version' : 1 }
-
-" NerdTree keymaps
-nnoremap <C-f> :NvimTreeFocus<CR>
-nnoremap <C-l> :NvimTreeToggle<CR>
-nnoremap <C-s> :NvimTreeFindFile<CR>
-
-nnoremap  <silent> ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <silent>fg <cmd>Telescope live_grep<cr>
-nnoremap <silent>fb <cmd>Telescope buffers<cr>
-nnoremap <silent>fh <cmd>Telescope help_tags<cr>
 
 " vscode-like completion highlight
 set termguicolors
