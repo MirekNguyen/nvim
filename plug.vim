@@ -1,6 +1,8 @@
 set nocompatible
 call plug#begin()
-" Using Vim-Plug:
+" Nvim greeter
+Plug 'glepnir/dashboard-nvim'
+
 " Themes
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
@@ -15,8 +17,9 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " NerdTree colors
 Plug 'ryanoasis/vim-devicons' " NerdTree icons
 Plug 'romgrk/barbar.nvim'
 
-"Navigation 
+" Navigation 
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'kyazdani42/nvim-tree.lua'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
@@ -34,7 +37,10 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'rafamadriz/friendly-snippets' "Plug 'SirVer/ultisnips'
-"Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+
+" LSP ultisnips
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'mlaursen/vim-react-snippets'
 
 " LSP other 
 Plug 'onsails/lspkind.nvim'
@@ -44,6 +50,7 @@ Plug 'tami5/lspsaga.nvim'
 " Text editing, autopairs 
 Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 
 " Snipmate
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -55,7 +62,13 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'kyazdani42/nvim-web-devicons' " Add icons to telescope
 
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
-Plug 'glepnir/dashboard-nvim'
-Plug 'kyazdani42/nvim-tree.lua'
+" Emment-ls
+Plug 'aca/emmet-ls'
+
+" Git in nvim
+Plug 'tpope/vim-fugitive'
+
+" Terminal in neovim 
+Plug 'voldikss/vim-floaterm'
+Plug 'akinsho/toggleterm.nvim'
 call plug#end()
