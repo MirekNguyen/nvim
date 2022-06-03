@@ -71,4 +71,8 @@ Plug 'tpope/vim-fugitive'
 " Terminal in neovim 
 Plug 'voldikss/vim-floaterm'
 Plug 'akinsho/toggleterm.nvim'
+
+" Speed up neovim
+Plug 'lewis6991/impatient.nvim' 
+Plug 'nathom/filetype.nvim'
 call plug#end()

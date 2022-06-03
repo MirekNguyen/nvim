@@ -8,4 +8,5 @@ require("indent_blankline").setup {
     show_current_context_start = true,
 }
 require("toggleterm").setup{}
+require("impatient").enable_profile()
 EOF
