@@ -1,4 +1,3 @@
-lua << EOF
 require('nvim-tree').setup {
    diagnostics = {
     enable = true,
@@ -14,4 +13,3 @@ require('nvim-tree').setup {
     update_cwd = true,
   },
 }
-EOF

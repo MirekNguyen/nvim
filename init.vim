@@ -1,39 +1,37 @@
 runtime ./plug.vim "include plugins
-runtime ./setup.vim
+runtime ./setup.vim "include setup
 runtime ./map.vim
-"set nvim¬§
-syntax on
-set shiftwidth=3
+" Set vim variables
 set mouse=a "mouse in vim
-set number
+set number "numbered vim
 set ignorecase "search in vim using '/' no case sensitive
-set clipboard+=unnamedplus
-" set tabstop=3 "setting tab width
-" set paste " don't mess up the indenting of pasted text
+set clipboard+=unnamedplus " sync clipboard
+" Tab 
+set shiftwidth=3
+set tabstop=3
+set expandtab
+set smartindent
+set smarttab
+set noswapfile
+set completeopt=menu,menuone,noselect
+set nocompatible
 
-" Vim Theme
-colorscheme gruvbox 
-let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox'
-
-" SnipMate snippets autocomplete
-let g:snipMate = { 'snippet_version' : 1 }
-
-" vscode-like completion highlight
+" Vim theme
+syntax on
 set termguicolors
-" gray
+colorscheme gruvbox 
+
+
+highlight link LspSagaFinderSelection Search
+" vscode-like completion highlight
 highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
-" blue
 highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
 highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
-" light blue
 highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
 highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE
 highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE
-" pink
 highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
 highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
-" front
 highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4

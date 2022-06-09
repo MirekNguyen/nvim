@@ -1,4 +1,3 @@
-lua << EOF
 local lspsaga = require 'lspsaga'
 lspsaga.setup { -- defaults ...
   debug = false,
@@ -48,5 +47,3 @@ lspsaga.setup { -- defaults ...
   diagnostic_message_format = "%m %c",
   highlight_prefix = false,
 }
-EOF
-highlight link LspSagaFinderSelection Search
