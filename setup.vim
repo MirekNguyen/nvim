@@ -12,6 +12,5 @@ require('nvim-gps').setup()
 require('Comment').setup()
 require('trouble').setup()
 require('numb').setup()
-require('todo-comments').setup()
 require("diffview").setup()
 EOF
