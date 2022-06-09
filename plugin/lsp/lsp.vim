@@ -16,7 +16,7 @@ map(0, "n", "<C-k>", "<cmd>Lspsaga signature_help<cr>", {silent = true, noremap 
 end
 -- Setup lspconfig.
 -- Use a loop to conveniently call 'setup' on multiple servers and
-local servers = { 'clangd', 'html', 'grammarly', 'cssls'  }
+local servers = { 'clangd', 'html', 'grammarly', 'cssls', 'jdtls', 'intelephense'  }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup { 
      on_attach = on_attach,
