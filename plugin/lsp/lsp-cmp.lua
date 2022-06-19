@@ -18,7 +18,7 @@ cmp.setup({
    },
    formatting = {
       format = lspkind.cmp_format({
-         mode = "text_symbol",
+         mode = "symbol_text",
          --[[ menu = ({
             buffer = "[Buffer]",
             nvim_lsp = "[LSP]",
