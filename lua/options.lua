@@ -12,7 +12,8 @@ local options = {
    termguicolors = true,
    swapfile = false,
    compatible = false,
-   clipboard = "unnamedplus"
+   clipboard = "unnamedplus",
+   splitright = false,
 }
 for key, value in pairs(options) do
    vim.opt[key] = value
