@@ -1,9 +1,5 @@
-function map(mode, shortcut, command)
-   vim.api.nvim_set_keymap(mode, shortcut, command .. '<CR>', { noremap = true, silent = true })
-end
-
 function nmap(shortcut, command)
-   map('n', shortcut, command)
+   vim.api.nvim_set_keymap("n", shortcut, command .. '<CR>', { noremap = true, silent = true })
 end
 
 -- NvimTree
@@ -15,10 +11,10 @@ nmap("<C-k>", ":NvimTreeRefresh")
 nmap("ff", ":Telescope find_files");
 nmap("fg", ":Telescope live_grep");
 -- Floaterm
-nmap("<C-j>", ":FloatermToggle")
-nmap("<C-,>", ":ToggleTerm")
-nmap("<C-z>", ":TroubleToggle")
-vim.g.floaterm_keymap_toggle = "<C-j>"
+nmap("<A-j>", ":FloatermToggle")
+nmap("<A-,>", ":ToggleTerm")
+nmap("<A-z>", ":TroubleToggle")
+vim.g.floaterm_keymap_toggle = "<A-j>"
 -- Barbar
 nmap("<A-q>", ":BufferPrevious")
 nmap("<A-w>", ":BufferNext")
@@ -37,4 +33,5 @@ nmap("<A-p>", ":BufferPin")
 -- Close buffer
 nmap("<A-d>", ":BufferClose")
 -- Magic buffer-picking mode
-nmap("<C-s>", ":BufferPick")
+nmap("<A-s>", ":BufferPick")
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]

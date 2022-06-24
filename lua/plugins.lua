@@ -78,5 +78,8 @@ require('packer').startup(function()
    -- Git
    use 'sindrets/diffview.nvim'
 
+   -- Markdown
+   use 'iamcco/markdown-preview.nvim'
+
    use 'dstein64/vim-startuptime'
 end)
