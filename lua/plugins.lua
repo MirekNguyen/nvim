@@ -7,19 +7,19 @@ require('packer').startup(function()
    use 'nvim-lualine/lualine.nvim'
    -- use 'Mofiqul/dracula.nvim'
 
-   -- NerdTree
+   -- Nvim-tree
    use 'ryanoasis/vim-devicons' -- NerdTree icons
    use 'kyazdani42/nvim-tree.lua'
-   use 'romgrk/barbar.nvim'
+   use 'romgrk/barbar.nvim' -- tabs in neovim, nvim-tree
 
    -- Navigation
-   use 'christoomey/vim-tmux-navigator'
-   use 'ggandor/lightspeed.nvim'
+   use 'christoomey/vim-tmux-navigator' -- navigate between tmux and neovim seamlessly
+   use 'ggandor/lightspeed.nvim' -- quickly navigate using 's' and 'S' keys
    use {
-      "SmiteshP/nvim-gps",
+      "SmiteshP/nvim-gps", -- status line, location (e.g. demo.cpp > main > mystruct)
       requires = "nvim-treesitter/nvim-treesitter"
    }
-   use 'nacro90/numb.nvim'
+   use 'nacro90/numb.nvim' -- peeks lines of buffer in non-obtrusive way
 
    -- LSP
    use 'neovim/nvim-lspconfig'
@@ -48,16 +48,19 @@ require('packer').startup(function()
    use 'tami5/lspsaga.nvim'
 
    -- Text editing, autopairs
-   use 'windwp/nvim-autopairs'
-   use 'lukas-reineke/indent-blankline.nvim'
+   use 'jiangmiao/auto-pairs' -- auto pair brackets, quotations
+   use 'lukas-reineke/indent-blankline.nvim' -- add indentation guideline
+   use 'tpope/vim-repeat' -- repeat last command, vim-surround
+   use 'tpope/vim-surround' -- ability to change brackets, quotations
+   use 'AndrewRadev/tagalong.vim' -- for editing HTML tags on both side
+   use 'norcalli/nvim-colorizer.lua' -- visualize colors in html, css
 
+   -- Code format, troubleshoot
    use {
       'prettier/vim-prettier',
       run = 'yarn install --frozen-lockfile --production'
    }
-   --use 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
-   use 'lewis6991/gitsigns.nvim'
-   use 'folke/trouble.nvim'
+   use 'folke/trouble.nvim' -- navigate through warnings, errors
 
    -- Telescope navigation
    use 'nvim-lua/plenary.nvim'
@@ -71,15 +74,15 @@ require('packer').startup(function()
    -- Speed up neovim
    use 'lewis6991/impatient.nvim'
    use 'nathom/filetype.nvim'
+   use 'dstein64/vim-startuptime' -- check startup time
 
    -- Comment
    use 'numToStr/Comment.nvim'
 
    -- Git
    use 'sindrets/diffview.nvim'
+   use 'lewis6991/gitsigns.nvim'
 
    -- Markdown
    use 'iamcco/markdown-preview.nvim'
-
-   use 'dstein64/vim-startuptime'
 end)

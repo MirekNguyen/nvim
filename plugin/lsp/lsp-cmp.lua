@@ -6,7 +6,7 @@ end
 local luasnip = require("luasnip")
 local lspkind = require('lspkind')
 -- Setup nvim-cmp.
-local cmp = require'cmp'
+local cmp = require 'cmp'
 cmp.setup({
    snippet = {
       -- REQUIRED - you must specify a snippet engine

@@ -26,7 +26,7 @@ end
 local lspconfig = require('lspconfig')
 local servers = {
    "clangd", "bashls", "cssls", "eslint", "html", "intelephense", "jdtls", "jsonls", "pyright",
-   "tailwindcss", "tsserver", "sumneko_lua", "emmet_ls"
+   "tsserver", "sumneko_lua", "emmet_ls"
 }
 for _, lsp in pairs(servers) do
    lspconfig[lsp].setup {
@@ -37,3 +37,20 @@ for _, lsp in pairs(servers) do
       end
    }
 end
+lspconfig.emmet_ls.setup {
+   on_attach = on_attach,
+   capabilities = capabilities,
+   filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+   root_dir = function()
+      return vim.fn.getcwd()
+   end
+}
+lspconfig.tailwindcss.setup {
+   on_attach = on_attach,
+   capabilities = capabilities,
+   filetypes = { "html", "php", "css", "sass", "scss", "postcss", "less", "javascript", "javascriptreact", "typescript",
+      "typescriptreact", "vue", "svelte" },
+   root_dir = function()
+      return vim.fn.getcwd()
+   end
+}
