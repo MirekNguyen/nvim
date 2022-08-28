@@ -1,5 +1,5 @@
 function nmap(shortcut, command)
-   vim.api.nvim_set_keymap("n", shortcut, command .. '<CR>', { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("n", shortcut, command .. '<CR>', { noremap = true, silent = true })
 end
 
 -- NvimTree
@@ -16,8 +16,8 @@ nmap("<A-,>", ":ToggleTerm")
 nmap("<A-z>", ":TroubleToggle")
 vim.g.floaterm_keymap_toggle = "<A-j>"
 -- Barbar
-nmap("<A-q>", ":BufferPrevious")
-nmap("<A-w>", ":BufferNext")
+nmap("<A-[>", ":BufferPrevious")
+nmap("<A-]>", ":BufferNext")
 -- Goto buffer in position...
 nmap("<A-1>", ":BufferGoto 1")
 nmap("<A-2>", ":BufferGoto 2")
@@ -31,7 +31,10 @@ nmap("<A-9>", ":BufferLast")
 -- Pin/unpin buffer
 nmap("<A-p>", ":BufferPin")
 -- Close buffer
-nmap("<A-d>", ":BufferClose")
+nmap("<A-w>", ":BufferClose")
 -- Magic buffer-picking mode
 nmap("<A-s>", ":BufferPick")
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+vim.cmd [[autocmd BufWritePre *.php Prettier]]
+-- vim.g["prettier#autoformat"] = 1
+-- vim.g["prettier#autoformat_require_pragma"] = 0
