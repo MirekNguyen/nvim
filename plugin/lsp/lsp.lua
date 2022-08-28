@@ -1,9 +1,11 @@
+local status, lspconfig = pcall(require, 'lspconfig')
+if (not status) then return end
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Setup lspconfig.
 -- Use a loop to conveniently call 'setup' on multiple servers and
-local lspconfig = require('lspconfig')
 local servers = {
   "clangd", "bashls", "cssls", "eslint", "intelephense", "jdtls", "pyright",
   "sumneko_lua", "emmet_ls"

@@ -1,5 +1,8 @@
-require("null-ls").setup({
+local status, null_ls = pcall(require, 'null-ls')
+if (not status) then return end
+
+null_ls.setup({
   sources = {
-    require("null-ls").builtins.formatting.prettierd
+    null_ls.builtins.formatting.prettierd
   },
 })
