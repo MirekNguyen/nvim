@@ -4,7 +4,7 @@ if (not status) then return end
 lspsaga.init_lsp_saga()
 
 function nmap(shortcut, command)
-  vim.api.nvim_buf_set_keymap(0, "n", shortcut, command .. '<CR>', { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("n", shortcut, command .. '<CR>', { noremap = true, silent = true })
 end
 
 nmap("gh", ":Lspsaga lsp_finder")
