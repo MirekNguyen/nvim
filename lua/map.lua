@@ -12,7 +12,7 @@ nmap("ff", ":Telescope find_files");
 nmap("fg", ":Telescope live_grep");
 -- Floaterm
 nmap("<A-j>", ":FloatermToggle")
-nmap("<A-,>", ":ToggleTerm")
+-- nmap("<A-,>", ":ToggleTerm")
 nmap("<A-z>", ":TroubleToggle")
 vim.g.floaterm_keymap_toggle = "<A-j>"
 -- Barbar

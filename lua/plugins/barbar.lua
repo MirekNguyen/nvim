@@ -1,4 +1,4 @@
-local status, _ = pcall(require, 'bufferline')
+local status, bufferline = pcall(require, 'bufferline')
 if (not status) then return end
 
 vim.api.nvim_create_autocmd('BufWinEnter', {
@@ -18,3 +18,4 @@ vim.api.nvim_create_autocmd('BufWinLeave', {
     end
   end
 })
+bufferline.setup()

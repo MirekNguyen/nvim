@@ -16,6 +16,7 @@ local options = {
   compatible = false,
   clipboard = "unnamedplus",
   splitright = false,
+  bufhidden = 'delete',
 }
 for key, value in pairs(options) do
   vim.opt[key] = value
@@ -27,7 +28,7 @@ end
 
 vim.cmd [[
     try
-        colorscheme gruvbox
+        colorscheme gruvbox8
     catch /^Vim\%((\a\+)\)\=:E18/
         colorscheme default
         set background=dark

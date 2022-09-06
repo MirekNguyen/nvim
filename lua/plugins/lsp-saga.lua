@@ -1,8 +1,3 @@
-local status, lspsaga = pcall(require, 'lspsaga')
-if (not status) then return end
-
-lspsaga.init_lsp_saga()
-
 function nmap(shortcut, command)
   vim.api.nvim_set_keymap("n", shortcut, command .. '<CR>', { noremap = true, silent = true })
 end
@@ -22,3 +17,8 @@ nmap("[e", ":Lspsaga diagnostic_jump_prev")
 nmap("]e", ":Lspsaga diagnostic_jump_next")
 nmap("go", ":LSoutlineToggle")
 nmap("cd", ":Lspsaga show_line_diagnostics")
+
+local status, lspsaga = pcall(require, 'lspsaga')
+if (not status) then return end
+
+lspsaga.init_lsp_saga()

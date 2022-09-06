@@ -7,7 +7,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 vim.cmd [[packadd packer.nvim]]
-require('packer').startup(function()
+return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Dependency
@@ -15,83 +15,80 @@ require('packer').startup(function()
   use 'nvim-lua/plenary.nvim'
 
   -- Themes
-  use 'morhetz/gruvbox'
-  use 'nvim-lualine/lualine.nvim'
-
-  -- Nvim-tree
-  use 'kyazdani42/nvim-tree.lua'
-  use 'romgrk/barbar.nvim' -- tabs in neovim, nvim-tree
+  use 'lifepillar/vim-gruvbox8'
+  use { 'nvim-lualine/lualine.nvim', config = function() require('plugins.lualine') end, event = "BufReadPre" }
 
   -- Navigation
-  use 'christoomey/vim-tmux-navigator' -- navigate between tmux and neovim seamlessly
-  use 'ggandor/lightspeed.nvim' -- quickly navigate using 's' and 'S' keys
-  use {
-    'nvim-treesitter/nvim-treesitter',
+  use { 'kyazdani42/nvim-tree.lua', config = function() require('plugins.nvim-tree') end, cmd = { 'NvimTreeToggle' } }
+  use { 'romgrk/barbar.nvim', config = function() require('plugins.barbar') end, event = "BufReadPre" } -- tabs in neovim, nvim-tree
+  use { 'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    config = function() require('plugins.treesitter') end,
+    event = "BufRead"
   }
-  use {
-    "SmiteshP/nvim-gps", -- status line location (e.g. demo.cpp > main > mystruct)
-    requires = "nvim-treesitter/nvim-treesitter"
-  }
-  use 'nacro90/numb.nvim' -- peeks lines of buffer in non-obtrusive way
-  use 'nvim-telescope/telescope.nvim' -- telescope navigation
+  use { 'nvim-telescope/telescope.nvim', cmd = "Telescope" } -- telescope navigation
 
   -- LSP
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
+  use { 'neovim/nvim-lspconfig', config = function() require('plugins.lsp') end, after = 'nvim-lsp-installer' }
+  use { 'williamboman/nvim-lsp-installer', config = function() require('plugins.lsp-installer') end,
+    after = "cmp-nvim-lsp" }
 
   -- LSP cmp = autosuggestion
   use { 'hrsh7th/nvim-cmp',
-    requires = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline'
-    }
+    config = function() require('plugins.lsp-cmp') end,
+    event = "InsertEnter",
+    requires = { { 'L3MON4D3/LuaSnip', opt = true }, { 'onsails/lspkind.nvim', opt = true } }
   }
-
-  -- LSP cmp = snippets
-  use 'saadparwaiz1/cmp_luasnip'
-  use 'L3MON4D3/LuaSnip'
-  use 'rafamadriz/friendly-snippets'
-  use 'aca/emmet-ls'
+  use { 'hrsh7th/cmp-nvim-lsp', after = "nvim-cmp" }
+  use { 'hrsh7th/cmp-buffer', after = "nvim-cmp" }
+  use { 'hrsh7th/cmp-path', after = "nvim-cmp" }
+  use { 'hrsh7th/cmp-cmdline', after = "nvim-cmp" }
+  use { 'saadparwaiz1/cmp_luasnip', after = "nvim-cmp" }
 
   -- LSP other
-  use 'onsails/lspkind.nvim'
-  use 'ray-x/lsp_signature.nvim'
-  use({ "glepnir/lspsaga.nvim", branch = "main", })
+  use { 'ray-x/lsp_signature.nvim', config = function() require('plugins.lsp-signature') end, after = 'nvim-lspconfig' }
+  use({ "glepnir/lspsaga.nvim", branch = "main", config = function() require('plugins.lsp-saga') end,
+    after = "nvim-lspconfig" })
 
   -- Text editing, autopairs
-  use 'jiangmiao/auto-pairs' -- auto pair brackets, quotations
-  use 'lukas-reineke/indent-blankline.nvim' -- add indentation guideline
-  use 'tpope/vim-repeat' -- repeat last command, vim-surround
-  use 'tpope/vim-surround' -- ability to change brackets, quotations
-  use 'AndrewRadev/tagalong.vim' -- for editing HTML tags on both side
-  use 'norcalli/nvim-colorizer.lua' -- visualize colors in html, css
+  use { 'jiangmiao/auto-pairs', event = "BufWinEnter" } -- auto pair brackets, quotations
+  use { 'lukas-reineke/indent-blankline.nvim', config = function() require('plugins.indent-blankline') end,
+    event = "BufRead" } -- add indentation guideline
+  use { 'tpope/vim-repeat', event = "BufWinEnter" } -- repeat last command, vim-surround
+  use { 'tpope/vim-surround', event = "BufWinEnter" } -- ability to change brackets, quotations
+  use { 'AndrewRadev/tagalong.vim', event = "BufWinEnter" } -- for editing HTML tags on both side
+  use { 'norcalli/nvim-colorizer.lua', cmd = "ColorizerToggle" } -- visualize colors in html, css
 
   -- Code format, troubleshoot
-  use 'prettier/vim-prettier'
-  use 'folke/trouble.nvim' -- navigate through warnings, error_message
-  use 'numToStr/Comment.nvim'
-  use 'jose-elias-alvarez/null-ls.nvim'
+  use { 'prettier/vim-prettier', cmd = "Prettier" }
+  use { 'folke/trouble.nvim', config = function() require('plugins.trouble') end, cmd = "TroubleToggle" } -- navigate through warnings, error_message
+  use { 'numToStr/Comment.nvim', config = function() require('plugins.comment') end, event = 'BufWinEnter' }
+  use { 'jose-elias-alvarez/null-ls.nvim', config = function() require('plugins.null-ls') end, after = 'nvim-lspconfig' }
 
   -- Terminal in neovim
-  use 'voldikss/vim-floaterm'
-  use 'akinsho/toggleterm.nvim'
+  use { 'voldikss/vim-floaterm', cmd = "FloatermToggle" }
 
   -- Speed up neovim
-  use 'lewis6991/impatient.nvim'
+  use { 'lewis6991/impatient.nvim', config = function() require('plugins.impatient') end }
   use 'nathom/filetype.nvim'
   use 'dstein64/vim-startuptime' -- check startup time
 
   -- Git
-  use 'sindrets/diffview.nvim'
-  use 'lewis6991/gitsigns.nvim'
+  use { 'lewis6991/gitsigns.nvim',
+    opt = true,
+    event = 'BufWinEnter',
+    config = function() require('plugins.gitsigns') end,
+  }
 
   -- Markdown
-  use { 'iamcco/markdown-preview.nvim',
-    run = function() vim.fn["mkdp#util#install"]() end,
-  }
+  use { 'iamcco/markdown-preview.nvim', run = function() vim.fn["mkdp#util#install"]() end }
+  -- Optional
+  -- use 'ggandor/lightspeed.nvim' -- quickly navigate using 's' and 'S' keys
+  -- use 'nacro90/numb.nvim' -- peeks lines of buffer in non-obtrusive way
+  -- use 'christoomey/vim-tmux-navigator' -- navigate between tmux and neovim seamlessly
+  -- use 'sindrets/diffview.nvim'
+  -- use 'akinsho/toggleterm.nvim'
+  -- use {"SmiteshP/nvim-gps", -- status line location (e.g. demo.cpp > main > mystruct) requires = "nvim-treesitter/nvim-treesitter"}
 
   if packer_bootstrap then
     require('packer').sync()
