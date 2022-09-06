@@ -21,9 +21,7 @@ local options = {
 for key, value in pairs(options) do
   vim.opt[key] = value
 end
-
-local function vcom(command)
-  vim.api.nvim_command(command)
+local function vcom(command) vim.api.nvim_command(command)
 end
 
 vim.cmd [[
@@ -47,3 +45,29 @@ vcom("highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0")
 vcom("highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4")
 vcom("highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4")
 vcom("highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4")
+
+local disabled_built_ins = {
+  "netrw",
+  "netrwPlugin",
+  "netrwSettings",
+  "netrwFileHandlers",
+  "gzip",
+  "zip",
+  "zipPlugin",
+  "tar",
+  "tarPlugin",
+  "getscript",
+  "getscriptPlugin",
+  "vimball",
+  "vimballPlugin",
+  "2html_plugin",
+  "logipat",
+  "rrhelper",
+  "spellfile_plugin",
+  "matchit",
+  "matchparen"
+}
+
+for _, plugin in pairs(disabled_built_ins) do
+  vim.g["loaded_" .. plugin] = 1
+end
