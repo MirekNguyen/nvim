@@ -37,7 +37,10 @@ return require('packer').startup(function(use)
   use { 'hrsh7th/nvim-cmp',
     config = function() require('plugins.lsp-cmp') end,
     event = "InsertEnter",
-    requires = { { 'L3MON4D3/LuaSnip', opt = true }, { 'onsails/lspkind.nvim', opt = true } }
+    requires = {
+      { 'L3MON4D3/LuaSnip', config = function() require('plugins.luasnip') end, event = 'InsertEnter' },
+      { 'onsails/lspkind.nvim', event = 'InsertEnter' }
+    }
   }
   use { 'hrsh7th/cmp-nvim-lsp', after = "nvim-cmp" }
   use { 'hrsh7th/cmp-buffer', after = "nvim-cmp" }
