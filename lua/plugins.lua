@@ -6,13 +6,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
-vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-
-  -- Dependency
-  use 'kyazdani42/nvim-web-devicons'
-  use 'nvim-lua/plenary.nvim'
 
   -- Themes
   use 'lifepillar/vim-gruvbox8'
@@ -20,13 +15,14 @@ return require('packer').startup(function(use)
 
   -- Navigation
   use { 'kyazdani42/nvim-tree.lua', config = function() require('plugins.nvim-tree') end, cmd = { 'NvimTreeToggle' } }
-  use { 'romgrk/barbar.nvim', config = function() require('plugins.barbar') end, event = "BufReadPre" } -- tabs in neovim, nvim-tree
+  use { 'romgrk/barbar.nvim', config = function() require('plugins.barbar') end, event = "BufReadPre",
+    requires = { 'kyazdani42/nvim-web-devicons', event = "BufReadPre" }
+  }
   use { 'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-    config = function() require('plugins.treesitter') end,
-    event = "BufRead"
+    config = function() require('plugins.treesitter') end, event = "BufRead"
   }
-  use { 'nvim-telescope/telescope.nvim', cmd = "Telescope" } -- telescope navigation
+  use { 'nvim-telescope/telescope.nvim', cmd = "Telescope", requires = { 'nvim-lua/plenary.nvim', event = "BufRead" } }
 
   -- LSP
   use { 'neovim/nvim-lspconfig', config = function() require('plugins.lsp') end, after = 'nvim-lsp-installer' }
@@ -64,9 +60,10 @@ return require('packer').startup(function(use)
 
   -- Code format, troubleshoot
   use { 'prettier/vim-prettier', cmd = "Prettier" }
-  use { 'folke/trouble.nvim', config = function() require('plugins.trouble') end, cmd = "TroubleToggle" } -- navigate through warnings, error_message
   use { 'numToStr/Comment.nvim', config = function() require('plugins.comment') end, event = 'BufWinEnter' }
-  use { 'jose-elias-alvarez/null-ls.nvim', config = function() require('plugins.null-ls') end, after = 'nvim-lspconfig' }
+  use { 'jose-elias-alvarez/null-ls.nvim', config = function() require('plugins.null-ls') end, after = 'nvim-lspconfig',
+    requires = { 'nvim-lua/plenary.nvim', event = "BufRead" } }
+  use { 'lewis6991/gitsigns.nvim', config = function() require('plugins.gitsigns') end, event = 'BufWinEnter', }
 
   -- Terminal in neovim
   use { 'voldikss/vim-floaterm', cmd = "FloatermToggle" }
@@ -76,15 +73,6 @@ return require('packer').startup(function(use)
   use 'nathom/filetype.nvim'
   use 'dstein64/vim-startuptime' -- check startup time
 
-  -- Git
-  use { 'lewis6991/gitsigns.nvim',
-    opt = true,
-    event = 'BufWinEnter',
-    config = function() require('plugins.gitsigns') end,
-  }
-
-  -- Markdown
-  use { 'iamcco/markdown-preview.nvim', run = function() vim.fn["mkdp#util#install"]() end }
   -- Optional
   -- use 'ggandor/lightspeed.nvim' -- quickly navigate using 's' and 'S' keys
   -- use 'nacro90/numb.nvim' -- peeks lines of buffer in non-obtrusive way
@@ -92,6 +80,8 @@ return require('packer').startup(function(use)
   -- use 'sindrets/diffview.nvim'
   -- use 'akinsho/toggleterm.nvim'
   -- use {"SmiteshP/nvim-gps", -- status line location (e.g. demo.cpp > main > mystruct) requires = "nvim-treesitter/nvim-treesitter"}
+  -- use { 'folke/trouble.nvim', config = function() require('plugins.trouble') end, cmd = "TroubleToggle" } -- navigate through warnings, error_message
+  -- use { 'iamcco/markdown-preview.nvim', run = function() vim.fn["mkdp#util#install"]() end }
 
   if packer_bootstrap then
     require('packer').sync()
