@@ -7,7 +7,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- Setup lspconfig.
 -- Use a loop to conveniently call 'setup' on multiple servers and
 local servers = {
-  "clangd", "bashls", "cssls", "sumneko_lua", "emmet_ls"
+  "clangd", "bashls", "cssls", "sumneko_lua", "emmet_ls",
 }
 for _, lsp in pairs(servers) do
   lspconfig[lsp].setup {

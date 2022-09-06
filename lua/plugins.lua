@@ -49,13 +49,11 @@ return require('packer').startup(function(use)
   use({ "glepnir/lspsaga.nvim", branch = "main", config = function() require('plugins.lsp-saga') end,
     after = "nvim-lspconfig" })
 
-  -- Text editing, autopairs
-  use { 'jiangmiao/auto-pairs', event = "BufWinEnter" } -- auto pair brackets, quotations
+  -- Text editing
+  use { "windwp/nvim-autopairs", config = function() require('plugins.nvim-autopairs') end, event = "BufWinEnter" }
   use { 'lukas-reineke/indent-blankline.nvim', config = function() require('plugins.indent-blankline') end,
     event = "BufRead" } -- add indentation guideline
-  use { 'tpope/vim-repeat', event = "BufWinEnter" } -- repeat last command, vim-surround
-  use { 'tpope/vim-surround', event = "BufWinEnter" } -- ability to change brackets, quotations
-  use { 'AndrewRadev/tagalong.vim', event = "BufWinEnter" } -- for editing HTML tags on both side
+  use({ "kylechui/nvim-surround", config = function() require("plugins.nvim-surround") end, event = "BufWinEnter" })
   use { 'norcalli/nvim-colorizer.lua', cmd = "ColorizerToggle" } -- visualize colors in html, css
 
   -- Code format, troubleshoot
@@ -70,7 +68,6 @@ return require('packer').startup(function(use)
   -- Speed up neovim
   use { 'lewis6991/impatient.nvim', config = function() require('plugins.impatient') end }
   use 'nathom/filetype.nvim'
-  use 'dstein64/vim-startuptime' -- check startup time
 
   -- Optional
   -- use 'ggandor/lightspeed.nvim' -- quickly navigate using 's' and 'S' keys
@@ -81,6 +78,9 @@ return require('packer').startup(function(use)
   -- use {"SmiteshP/nvim-gps", -- status line location (e.g. demo.cpp > main > mystruct) requires = "nvim-treesitter/nvim-treesitter"}
   -- use { 'folke/trouble.nvim', config = function() require('plugins.trouble') end, cmd = "TroubleToggle" } -- navigate through warnings, error_message
   -- use { 'iamcco/markdown-preview.nvim', run = function() vim.fn["mkdp#util#install"]() end }
+  -- use 'dstein64/vim-startuptime' -- check startup time
+  -- use { 'AndrewRadev/tagalong.vim', event = "BufWinEnter" } -- for editing HTML tags on both side
+  -- use { 'windwp/nvim-ts-autotag', config = function() require('nvim-ts-autotag').setup({ autotag = { enable = false, } }) end, after = "nvim-treesitter" }
 
   if packer_bootstrap then
     require('packer').sync()

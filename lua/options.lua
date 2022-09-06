@@ -16,7 +16,7 @@ local options = {
   compatible = false,
   clipboard = "unnamedplus",
   splitright = false,
-  bufhidden = 'delete',
+  -- shortmess = 'I',
 }
 for key, value in pairs(options) do
   vim.opt[key] = value
