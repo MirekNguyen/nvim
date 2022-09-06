@@ -24,6 +24,8 @@ end
 local function vcom(command) vim.api.nvim_command(command)
 end
 
+vim.g.gruvbox_italics = 0
+vim.g.gruvbox_italicize_strings = 0
 vim.cmd [[
     try
         colorscheme gruvbox8
