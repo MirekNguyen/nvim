@@ -3,6 +3,17 @@ if (not status) then return end
 
 null_ls.setup({
   sources = {
-    null_ls.builtins.formatting.prettierd
+    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.prettier.with({
+      extra_args = function(params)
+        return params.options
+            and params.options.tabSize
+            and {
+              "--tab-width",
+              params.options.tabSize,
+            }
+      end,
+      filetypes = { "php" }
+    }),
   }
 })

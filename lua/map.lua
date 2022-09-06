@@ -1,4 +1,4 @@
-function nmap(shortcut, command)
+local function nmap(shortcut, command)
   vim.api.nvim_set_keymap("n", shortcut, command .. '<CR>', { noremap = true, silent = true })
 end
 
@@ -34,7 +34,5 @@ nmap("<A-p>", ":BufferPin")
 nmap("<A-w>", ":BufferClose")
 -- Magic buffer-picking mode
 nmap("<A-s>", ":BufferPick")
+
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
-vim.cmd [[autocmd BufWritePre *.php Prettier]]
--- vim.g["prettier#autoformat"] = 1
--- vim.g["prettier#autoformat_require_pragma"] = 0

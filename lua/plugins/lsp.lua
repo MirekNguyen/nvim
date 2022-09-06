@@ -7,7 +7,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- Setup lspconfig.
 -- Use a loop to conveniently call 'setup' on multiple servers and
 local servers = {
-  "clangd", "bashls", "cssls", "intelephense", "sumneko_lua", "emmet_ls"
+  "clangd", "bashls", "cssls", "sumneko_lua", "emmet_ls"
 }
 for _, lsp in pairs(servers) do
   lspconfig[lsp].setup {
@@ -35,7 +35,7 @@ lspconfig.tailwindcss.setup {
 
 -- Turn off formatting, null-ls will take care of formatting with prettier
 local prettierServers = {
-  "tsserver", "html", "jsonls"
+  "tsserver", "html", "jsonls", "intelephense"
 }
 for _, lsp in pairs(prettierServers) do
   lspconfig[lsp].setup {

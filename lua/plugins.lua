@@ -59,7 +59,6 @@ return require('packer').startup(function(use)
   use { 'norcalli/nvim-colorizer.lua', cmd = "ColorizerToggle" } -- visualize colors in html, css
 
   -- Code format, troubleshoot
-  use { 'prettier/vim-prettier', cmd = "Prettier" }
   use { 'numToStr/Comment.nvim', config = function() require('plugins.comment') end, event = 'BufWinEnter' }
   use { 'jose-elias-alvarez/null-ls.nvim', config = function() require('plugins.null-ls') end, after = 'nvim-lspconfig',
     requires = { 'nvim-lua/plenary.nvim', event = "BufRead" } }
