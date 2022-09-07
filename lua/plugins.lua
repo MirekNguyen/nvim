@@ -25,11 +25,13 @@ return require('packer').startup(function(use)
   use { 'nvim-telescope/telescope.nvim', cmd = "Telescope", requires = { 'nvim-lua/plenary.nvim', event = "BufRead" } }
 
   -- LSP
-  use { 'neovim/nvim-lspconfig', config = function() require('plugins.lsp') end, after = 'nvim-lsp-installer' }
-  use { 'williamboman/nvim-lsp-installer', config = function() require('plugins.lsp-installer') end,
+  use { "williamboman/mason.nvim", config = function() require('mason').setup() end, event = "BufWinEnter" }
+  use { "williamboman/mason-lspconfig.nvim",
+    config = function() require('mason-lspconfig').setup({ automatic_installation = true }) end,
     after = "cmp-nvim-lsp" }
+  use { 'neovim/nvim-lspconfig', config = function() require('plugins.lsp') end, after = 'cmp-nvim-lsp' }
 
-  -- LSP cmp = autosuggestion
+  -- LSP cmp
   use { 'hrsh7th/nvim-cmp',
     config = function() require('plugins.lsp-cmp') end,
     event = "InsertEnter",
@@ -54,7 +56,7 @@ return require('packer').startup(function(use)
   use { 'lukas-reineke/indent-blankline.nvim', config = function() require('plugins.indent-blankline') end,
     event = "BufRead" } -- add indentation guideline
   use({ "kylechui/nvim-surround", config = function() require("plugins.nvim-surround") end, event = "BufWinEnter" })
-  use { 'norcalli/nvim-colorizer.lua', cmd = "ColorizerToggle" } -- visualize colors in html, css
+  use { 'norcalli/nvim-colorizer.lua', cmd = "ColorizerToggle" }
 
   -- Code format, troubleshoot
   use { 'numToStr/Comment.nvim', config = function() require('plugins.comment') end, event = 'BufWinEnter' }

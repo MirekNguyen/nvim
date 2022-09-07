@@ -8,11 +8,9 @@ local servers = {
   { name = "bashls" },
   { name = "cssls" },
   { name = "sumneko_lua" },
-  { name = "emmet_ls",
-    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
-  },
+  { name = "emmet_ls" },
   { name = "tailwindcss",
-    filetypes = { "html", "php", "css", "sass", "scss", "postcss", "less", "javascript", "javascriptreact", "typescript" },
+    filetypes = { "typescriptreact", "javascriptreact" }
   },
   -- set Null-ls formatting
   { name = "tsserver", on_attach = formattingOff() },
