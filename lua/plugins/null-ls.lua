@@ -10,11 +10,13 @@ null_ls.setup({
     }),
     -- Prettier must be installed externally, not with Mason, to properly work with 'php' files
     -- npm i -g prettier @prettier/plugin-php
-    null_ls.builtins.formatting.prettier.with({
-      extra_args = function(params)
-        return { "--tab-width=" .. params.options.tabSize }
-      end,
-      filetypes = { "php" }
-    }),
+    -- null_ls.builtins.formatting.prettier.with({
+    --   extra_args = function(params)
+    --     return { "--tab-width=" .. params.options.tabSize }
+    --   end,
+    --   filetypes = { "php" }
+    -- }),
+    null_ls.builtins.diagnostics.phpcs.with({ extra_args = { "--standard=PSR12" } }),
+    null_ls.builtins.formatting.phpcsfixer,
   }
 })
