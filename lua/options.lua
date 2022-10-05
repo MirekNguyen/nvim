@@ -1,6 +1,7 @@
 local options = {
   mouse = "a", -- mouse support
   number = true, -- number lines
+  relativenumber = true, -- relative number lines
   ignorecase = true, -- search case insensitive
   tabstop = 2, -- number of visual spaces per TAB
   shiftwidth = 2, -- number of spaces to use for autoindent
@@ -17,7 +18,7 @@ local options = {
   clipboard = "unnamedplus",
   splitright = false,
   -- shortmess = 'I',
-  cmdheight = 0,
+  -- cmdheight = 0,
 }
 for key, value in pairs(options) do
   vim.opt[key] = value

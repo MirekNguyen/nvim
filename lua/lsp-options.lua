@@ -18,5 +18,6 @@ local servers = {
   { name = "html", on_attach = formattingOff() },
   { name = "jsonls", on_attach = formattingOff() },
   { name = "intelephense", on_attach = formattingOff() },
+  { name = "texlab" },
 }
 return servers
