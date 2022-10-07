@@ -3,10 +3,12 @@ local options = {
   number = true, -- number lines
   relativenumber = true, -- relative number lines
   ignorecase = true, -- search case insensitive
+  smartcase = true, -- case sensitive when search query contains uppercase
   tabstop = 2, -- number of visual spaces per TAB
   shiftwidth = 2, -- number of spaces to use for autoindent
   softtabstop = 2, -- numbers of spaces to use for autoindent
   expandtab = true, -- tabs are spaces
+  shiftround = true, -- round to nearest shiftwidth, applies to < > commands
   smartindent = true,
   smarttab = true,
   autoindent = true,
@@ -17,8 +19,6 @@ local options = {
   compatible = false,
   clipboard = "unnamedplus",
   splitright = false,
-  -- shortmess = 'I',
-  -- cmdheight = 0,
 }
 for key, value in pairs(options) do
   vim.opt[key] = value

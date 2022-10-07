@@ -1,4 +1,4 @@
 plugin/packer_compiled.lua
 .luarc.json
 plugin/
-
+.DS_Store

@@ -55,17 +55,12 @@ return require('packer').startup(function(use)
   use { "windwp/nvim-autopairs", config = function() require('plugins.nvim-autopairs') end, event = "BufWinEnter" }
   use { 'lukas-reineke/indent-blankline.nvim', config = function() require('plugins.indent-blankline') end,
     event = "BufRead" } -- add indentation guideline
-  use({ "kylechui/nvim-surround", config = function() require("plugins.nvim-surround") end, event = "BufWinEnter" })
-  use { 'norcalli/nvim-colorizer.lua', cmd = "ColorizerToggle" }
+  use { "kylechui/nvim-surround", config = function() require("plugins.nvim-surround") end, event = "BufWinEnter" }
 
   -- Code format, troubleshoot
   use { 'numToStr/Comment.nvim', config = function() require('plugins.comment') end, event = 'BufWinEnter' }
   use { 'jose-elias-alvarez/null-ls.nvim', config = function() require('plugins.null-ls') end, after = 'nvim-lspconfig',
     requires = { 'nvim-lua/plenary.nvim', event = "BufRead" } }
-  use { 'lewis6991/gitsigns.nvim', config = function() require('plugins.gitsigns') end, event = 'BufWinEnter', }
-
-  -- Terminal in neovim
-  use { 'voldikss/vim-floaterm', cmd = "FloatermToggle" }
 
   -- Speed up neovim
   use { 'lewis6991/impatient.nvim', config = function() require('plugins.impatient') end }
@@ -76,13 +71,16 @@ return require('packer').startup(function(use)
   -- use 'nacro90/numb.nvim' -- peeks lines of buffer in non-obtrusive way
   -- use 'christoomey/vim-tmux-navigator' -- navigate between tmux and neovim seamlessly
   -- use 'sindrets/diffview.nvim'
-  -- use 'akinsho/toggleterm.nvim'
   -- use {"SmiteshP/nvim-gps", -- status line location (e.g. demo.cpp > main > mystruct) requires = "nvim-treesitter/nvim-treesitter"}
   -- use { 'folke/trouble.nvim', config = function() require('plugins.trouble') end, cmd = "TroubleToggle" } -- navigate through warnings, error_message
   -- use { 'iamcco/markdown-preview.nvim', run = function() vim.fn["mkdp#util#install"]() end }
   -- use 'dstein64/vim-startuptime' -- check startup time
   -- use { 'AndrewRadev/tagalong.vim', event = "BufWinEnter" } -- for editing HTML tags on both side
   -- use { 'windwp/nvim-ts-autotag', config = function() require('nvim-ts-autotag').setup({ autotag = { enable = false, } }) end, after = "nvim-treesitter" }
+  -- use { 'lewis6991/gitsigns.nvim', config = function() require('plugins.gitsigns') end, event = 'BufWinEnter', }
+  -- use { 'norcalli/nvim-colorizer.lua', cmd = "ColorizerToggle" }
+  -- use { 'voldikss/vim-floaterm', cmd = "FloatermToggle" }
+  -- use { "akinsho/toggleterm.nvim", config = function() require("plugins.toggleterm") end }
 
   if packer_bootstrap then
     require('packer').sync()
