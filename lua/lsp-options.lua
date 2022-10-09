@@ -17,7 +17,9 @@ local servers = {
   { name = "tsserver", on_attach = formattingOff() },
   { name = "html", on_attach = formattingOff() },
   { name = "jsonls", on_attach = formattingOff() },
-  { name = "intelephense", on_attach = formattingOff() },
+  { name = "intelephense", on_attach = formattingOff(), init_options = {
+    globalStoragePath = os.getenv('HOME') .. '/.local/share/intelephense'
+  } },
   { name = "texlab" },
 }
 return servers

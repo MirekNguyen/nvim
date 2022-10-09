@@ -15,5 +15,6 @@ for _, server in pairs(servers) do
     filetypes = (server.filetypes or nil),
     root_dir = (server.root_dir or root_dir),
     on_attach = (server.on_attach or nil),
+    init_options = (server.init_options or nil),
   }
 end
