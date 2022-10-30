@@ -20,6 +20,6 @@ local servers = {
   { name = "intelephense", on_attach = formattingOff(), init_options = {
     globalStoragePath = os.getenv('HOME') .. '/.local/share/intelephense'
   } },
-  { name = "texlab" },
+  { name = "omnisharp" },
 }
 return servers
