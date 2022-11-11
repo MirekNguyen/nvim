@@ -51,14 +51,7 @@ return require('packer').startup(function(use)
   use({ "glepnir/lspsaga.nvim", branch = "main", config = function() require('plugins.lsp-saga') end,
     after = "nvim-lspconfig" })
 
-  -- Text editing
-  use { "windwp/nvim-autopairs", config = function() require('plugins.nvim-autopairs') end, event = "BufWinEnter" }
-  use { 'lukas-reineke/indent-blankline.nvim', config = function() require('plugins.indent-blankline') end,
-    event = "BufRead" } -- add indentation guideline
-  use { "kylechui/nvim-surround", config = function() require("plugins.nvim-surround") end, event = "BufWinEnter" }
-
-  -- Code format, troubleshoot
-  use { 'numToStr/Comment.nvim', config = function() require('plugins.comment') end, event = 'BufWinEnter' }
+  -- Code format
   use { 'jose-elias-alvarez/null-ls.nvim', config = function() require('plugins.null-ls') end, after = 'nvim-lspconfig',
     requires = { 'nvim-lua/plenary.nvim', event = "BufRead" } }
 
@@ -81,6 +74,11 @@ return require('packer').startup(function(use)
   -- use { 'norcalli/nvim-colorizer.lua', cmd = "ColorizerToggle" }
   -- use { 'voldikss/vim-floaterm', cmd = "FloatermToggle" }
   -- use { "akinsho/toggleterm.nvim", config = function() require("plugins.toggleterm") end }
+  -- use { "windwp/nvim-autopairs", config = function() require('plugins.nvim-autopairs') end, event = "BufWinEnter" }
+  -- use { 'lukas-reineke/indent-blankline.nvim', config = function() require('plugins.indent-blankline') end,
+  --  event = "BufRead" } -- add indentation guideline
+  -- use { "kylechui/nvim-surround", config = function() require("plugins.nvim-surround") end, event = "BufWinEnter" }
+  -- use { 'numToStr/Comment.nvim', config = function() require('plugins.comment') end, event = 'BufWinEnter' }
 
   if packer_bootstrap then
     require('packer').sync()
