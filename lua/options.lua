@@ -20,7 +20,10 @@ local options = {
   splitright = false,
   laststatus = 0,
   shell = "/bin/bash", -- set shell
+  updatetime = 50
 }
+vim.g.mapleader = " "
+
 for key, value in pairs(options) do
   vim.opt[key] = value
 end

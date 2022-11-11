@@ -3,13 +3,10 @@ local function nmap(shortcut, command)
 end
 
 -- NvimTree
-nmap("<C-h>", ":NvimTreeFindFile")
-nmap("<C-n>", ":NvimTreeToggle")
-nmap("<C-f>", ":NvimTreeFocus")
-nmap("<C-k>", ":NvimTreeRefresh")
+nmap("<leader>k", ":NvimTreeToggle")
 -- Telescope
-nmap("ff", ":Telescope find_files");
-nmap("fg", ":Telescope live_grep");
+nmap("<leader>f", ":Telescope find_files");
+nmap("<leader>j", ":Telescope live_grep");
 -- Barbar
 nmap("<A-[>", ":BufferPrevious")
 nmap("<A-]>", ":BufferNext")
