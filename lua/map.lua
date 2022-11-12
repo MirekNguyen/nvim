@@ -2,6 +2,17 @@ local function nmap(shortcut, command)
   vim.api.nvim_set_keymap("n", shortcut, command .. '<CR>', { noremap = true, silent = true })
 end
 
+local function vmap(shortcut, command)
+  vim.api.nvim_set_keymap("v", shortcut, command .. '<CR>', { noremap = true, silent = true })
+end
+
+vmap("<leader>y", "\"+y")
+nmap("<leader>Y", "\"+Y")
+vmap("<leader>d", "\"+d")
+nmap("<leader>dd", "\"+dd")
+nmap("<leader>p", "\"+p")
+nmap("<leader>P", "\"+P")
+
 -- NvimTree
 nmap("<leader>k", ":NvimTreeToggle")
 -- Telescope

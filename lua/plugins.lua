@@ -11,7 +11,6 @@ return require('packer').startup(function(use)
 
   -- Themes
   use 'lifepillar/vim-gruvbox8'
-  use { 'nvim-lualine/lualine.nvim', config = function() require('plugins.lualine') end, event = "BufReadPre" }
 
   -- Navigation
   use { 'kyazdani42/nvim-tree.lua', config = function() require('plugins.nvim-tree') end, cmd = { 'NvimTreeToggle' } }
@@ -46,11 +45,6 @@ return require('packer').startup(function(use)
   use { 'hrsh7th/cmp-cmdline', after = "nvim-cmp" }
   use { 'saadparwaiz1/cmp_luasnip', after = "nvim-cmp" }
 
-  -- LSP other
-  use { 'ray-x/lsp_signature.nvim', config = function() require('plugins.lsp-signature') end, after = 'nvim-lspconfig' }
-  use({ "glepnir/lspsaga.nvim", branch = "main", config = function() require('plugins.lsp-saga') end,
-    after = "nvim-lspconfig" })
-
   -- Code format
   use { 'jose-elias-alvarez/null-ls.nvim', config = function() require('plugins.null-ls') end, after = 'nvim-lspconfig',
     requires = { 'nvim-lua/plenary.nvim', event = "BufRead" } }
@@ -79,6 +73,10 @@ return require('packer').startup(function(use)
   --  event = "BufRead" } -- add indentation guideline
   -- use { "kylechui/nvim-surround", config = function() require("plugins.nvim-surround") end, event = "BufWinEnter" }
   -- use { 'numToStr/Comment.nvim', config = function() require('plugins.comment') end, event = 'BufWinEnter' }
+  -- use { 'ray-x/lsp_signature.nvim', config = function() require('plugins.lsp-signature') end, after = 'nvim-lspconfig' }
+  -- use({ "glepnir/lspsaga.nvim", branch = "main", config = function() require('plugins.lsp-saga') end,
+  --  after = "nvim-lspconfig" })
+  -- use { 'nvim-lualine/lualine.nvim', config = function() require('plugins.lualine') end, event = "BufReadPre" }
 
   if packer_bootstrap then
     require('packer').sync()

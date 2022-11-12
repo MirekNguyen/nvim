@@ -12,27 +12,16 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-
 -- Setup nvim-cmp.
 cmp.setup({
   snippet = {
-    -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      luasnip.lsp_expand(args.body) -- For `luasnip` users.
-      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      luasnip.lsp_expand(args.body)
     end,
   },
   formatting = {
     format = lspkind.cmp_format({
       mode = "symbol_text",
-      -- menu = ({
-      --   buffer = "[Buffer]",
-      --   nvim_lsp = "[LSP]",
-      --   luasnip = "[LuaSnip]",
-      --   nvim_lua = "[Lua]",
-      --   latex_symbols = "[Latex]",
-      -- })
     }),
   },
   sources = {
@@ -54,7 +43,7 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-a>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
 
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -81,6 +70,7 @@ cmp.setup({
 
 -- VSCode highlight
 local function vcom(command) vim.api.nvim_command(command) end
+
 vcom("highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080")
 vcom("highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6")
 vcom("highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6")
