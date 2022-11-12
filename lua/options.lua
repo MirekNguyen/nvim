@@ -20,7 +20,10 @@ local options = {
   splitright = false,
   laststatus = 0,
   shell = "/bin/bash", -- set shell
-  updatetime = 50
+  updatetime = 50,
+  ruler = false,
+  showmode = false,
+  showcmd = false,
 }
 vim.g.mapleader = " "
 
