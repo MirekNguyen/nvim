@@ -8,7 +8,6 @@ local servers = {
   { name = "clangd" },
   { name = "bashls" },
   { name = "cssls" },
-  { name = "sumneko_lua" },
   { name = "emmet_ls" },
   { name = "tailwindcss",
     filetypes = { "typescriptreact", "javascriptreact" }
