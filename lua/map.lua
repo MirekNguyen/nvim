@@ -37,5 +37,7 @@ nmap("<A-p>", ":BufferPin")
 nmap("<A-w>", ":BufferClose")
 -- Magic buffer-picking mode
 nmap("<A-s>", ":BufferPick")
+nmap("<C-d>", "<C-d>zz")
+nmap("<C-u>", "<C-u>zz")
 
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
