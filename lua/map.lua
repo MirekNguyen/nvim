@@ -6,12 +6,18 @@ local function vmap(shortcut, command)
   vim.api.nvim_set_keymap("v", shortcut, command .. '<CR>', { noremap = true, silent = true })
 end
 
-vmap("<leader>y", "\"+y")
+-- normal
+nmap("<leader>yy", "\"+yy")
 nmap("<leader>Y", "\"+Y")
-vmap("<leader>d", "\"+d")
 nmap("<leader>dd", "\"+dd")
 nmap("<leader>p", "\"+p")
 nmap("<leader>P", "\"+P")
+
+-- visual
+vmap("<leader>y", "\"+y")
+vmap("<leader>d", "\"+d")
+vmap("<leader>p", "\"+p")
+vmap("<leader>P", "\"+P")
 
 -- NvimTree
 nmap("<leader>k", ":NvimTreeToggle")
