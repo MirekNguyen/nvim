@@ -1,84 +1,52 @@
-local fn = vim.fn
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
-    install_path })
-  vim.cmd [[packadd packer.nvim]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath, })
 end
-
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-
-  -- Themes
-  use 'lifepillar/vim-gruvbox8'
-
-  -- Navigation
-  use { 'kyazdani42/nvim-tree.lua', config = function() require('plugins.nvim-tree') end, cmd = { 'NvimTreeToggle' } }
-  use { 'romgrk/barbar.nvim', config = function() require('plugins.barbar') end, event = "BufReadPre",
-    requires = { 'kyazdani42/nvim-web-devicons', event = "BufReadPre" }
-  }
-  use { 'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+vim.opt.rtp:prepend(lazypath)
+return require("lazy").setup({
+  'lifepillar/vim-gruvbox8',
+  { 'kyazdani42/nvim-tree.lua', config = function() require('plugins.nvim-tree') end, cmd = { 'NvimTreeToggle' } },
+  { 
+    'romgrk/barbar.nvim', 
+    event = "BufReadPre",
+    config = function() require('plugins.barbar') end, 
+    dependencies = { 'kyazdani42/nvim-web-devicons' }
+  },
+  { 'nvim-telescope/telescope.nvim', cmd = "Telescope", dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 
+    'nvim-treesitter/nvim-treesitter',
+    build = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     config = function() require('plugins.treesitter') end, event = "BufRead"
-  }
-  use { 'nvim-telescope/telescope.nvim', cmd = "Telescope", requires = { 'nvim-lua/plenary.nvim', event = "BufRead" } }
-
-  -- LSP
-  use { "williamboman/mason.nvim", config = function() require('mason').setup() end, event = "BufWinEnter" }
-  use { "williamboman/mason-lspconfig.nvim",
-    config = function() require('mason-lspconfig').setup({ automatic_installation = true }) end,
-    after = "cmp-nvim-lsp" }
-  use { 'neovim/nvim-lspconfig', config = function() require('plugins.lsp') end, after = 'cmp-nvim-lsp' }
-
-  -- LSP cmp
-  use { 'hrsh7th/nvim-cmp',
-    config = function() require('plugins.lsp-cmp') end,
-    event = "InsertEnter",
-    requires = {
-      { 'L3MON4D3/LuaSnip', config = function() require('plugins.luasnip') end, event = 'InsertEnter' },
-      { 'onsails/lspkind.nvim', event = 'InsertEnter' }
+  },
+  { 'lewis6991/impatient.nvim', config = function() require('plugins.impatient') end },
+  'nathom/filetype.nvim',
+  { 
+    'neovim/nvim-lspconfig', 
+    config = function () require('plugins.lsp') end,
+    dependencies = {
+      { 
+        "williamboman/mason-lspconfig.nvim", config = function() require('mason-lspconfig').setup({ automatic_installation = true }) end,
+        dependencies = { "williamboman/mason.nvim", config = function() require('mason').setup() end, }
+      },
     }
-  }
-  use { 'hrsh7th/cmp-nvim-lsp', after = "nvim-cmp" }
-  use { 'hrsh7th/cmp-buffer', after = "nvim-cmp" }
-  use { 'hrsh7th/cmp-path', after = "nvim-cmp" }
-  use { 'hrsh7th/cmp-cmdline', after = "nvim-cmp" }
-  use { 'saadparwaiz1/cmp_luasnip', after = "nvim-cmp" }
-
-  -- Code format
-  use { 'jose-elias-alvarez/null-ls.nvim', config = function() require('plugins.null-ls') end, after = 'nvim-lspconfig',
-    requires = { 'nvim-lua/plenary.nvim', event = "BufRead" } }
-
-  -- Speed up neovim
-  use { 'lewis6991/impatient.nvim', config = function() require('plugins.impatient') end }
-  use 'nathom/filetype.nvim'
-
-  -- Optional
-  -- use 'ggandor/lightspeed.nvim' -- quickly navigate using 's' and 'S' keys
-  -- use 'nacro90/numb.nvim' -- peeks lines of buffer in non-obtrusive way
-  -- use 'christoomey/vim-tmux-navigator' -- navigate between tmux and neovim seamlessly
-  -- use 'sindrets/diffview.nvim'
-  -- use {"SmiteshP/nvim-gps", -- status line location (e.g. demo.cpp > main > mystruct) requires = "nvim-treesitter/nvim-treesitter"}
-  -- use { 'folke/trouble.nvim', config = function() require('plugins.trouble') end, cmd = "TroubleToggle" } -- navigate through warnings, error_message
-  -- use { 'iamcco/markdown-preview.nvim', run = function() vim.fn["mkdp#util#install"]() end }
-  -- use 'dstein64/vim-startuptime' -- check startup time
-  -- use { 'AndrewRadev/tagalong.vim', event = "BufWinEnter" } -- for editing HTML tags on both side
-  -- use { 'windwp/nvim-ts-autotag', config = function() require('nvim-ts-autotag').setup({ autotag = { enable = false, } }) end, after = "nvim-treesitter" }
-  -- use { 'lewis6991/gitsigns.nvim', config = function() require('plugins.gitsigns') end, event = 'BufWinEnter', }
-  -- use { 'norcalli/nvim-colorizer.lua', cmd = "ColorizerToggle" }
-  -- use { 'voldikss/vim-floaterm', cmd = "FloatermToggle" }
-  -- use { "akinsho/toggleterm.nvim", config = function() require("plugins.toggleterm") end }
-  -- use { "windwp/nvim-autopairs", config = function() require('plugins.nvim-autopairs') end, event = "BufWinEnter" }
-  -- use { 'lukas-reineke/indent-blankline.nvim', config = function() require('plugins.indent-blankline') end,
-  --  event = "BufRead" } -- add indentation guideline
-  -- use { "kylechui/nvim-surround", config = function() require("plugins.nvim-surround") end, event = "BufWinEnter" }
-  -- use { 'numToStr/Comment.nvim', config = function() require('plugins.comment') end, event = 'BufWinEnter' }
-  -- use { 'ray-x/lsp_signature.nvim', config = function() require('plugins.lsp-signature') end, after = 'nvim-lspconfig' }
-  -- use({ "glepnir/lspsaga.nvim", branch = "main", config = function() require('plugins.lsp-saga') end,
-  --  after = "nvim-lspconfig" })
-  -- use { 'nvim-lualine/lualine.nvim', config = function() require('plugins.lualine') end, event = "BufReadPre" }
-
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+  },
+  { 
+    'hrsh7th/nvim-cmp',
+    event = "InsertEnter",
+    config = function() require('plugins.lsp-cmp') end,
+    dependencies = {
+      { 'L3MON4D3/LuaSnip', config = function() require('plugins.luasnip') end },
+      { 'onsails/lspkind.nvim' },
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-nvim-lsp',
+      'saadparwaiz1/cmp_luasnip',
+    }
+  },
+  { 
+    'jose-elias-alvarez/null-ls.nvim', 
+    event = 'InsertEnter',
+    config = function() require('plugins.null-ls') end, 
+    dependencies = { 'nvim-lua/plenary.nvim' } },
+})
