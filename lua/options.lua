@@ -32,13 +32,8 @@ for key, value in pairs(options) do
 end
 
 vim.api.nvim_command("syntax on")
-
-vim.g.gruvbox_italics = 0
-vim.g.gruvbox_italicize_strings = 0
-vim.cmd [[
-    try
-        colorscheme gruvbox8
-    catch /^Vim\%((\a\+)\)\=:E18/
-        colorscheme default
-        set background=dark
-]]
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.wo.fillchars = 'eob: '

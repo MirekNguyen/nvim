@@ -4,11 +4,24 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 return require("lazy").setup({
-  'lifepillar/vim-gruvbox8',
+  -- {
+  --   'lifepillar/vim-gruvbox8', config = function() 
+  --     vim.cmd([[colorscheme gruvbox8]])
+  --     vim.g.gruvbox_italics = 0
+  --     vim.g.gruvbox_italicize_strings = 0
+  --   end
+  -- },
+  {
+    'ellisonleao/gruvbox.nvim',
+    config = function()
+      vim.cmd([[colorscheme gruvbox]])
+    end
+  },
+
   { 'kyazdani42/nvim-tree.lua', config = function() require('plugins.nvim-tree') end, cmd = { 'NvimTreeToggle' } },
   { 
     'romgrk/barbar.nvim', 
-    event = "BufReadPre",
+    event = "BufRead",
     config = function() require('plugins.barbar') end, 
     dependencies = { 'kyazdani42/nvim-web-devicons' }
   },
@@ -18,15 +31,16 @@ return require("lazy").setup({
     build = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     config = function() require('plugins.treesitter') end, event = "BufRead"
   },
-  { 'lewis6991/impatient.nvim', config = function() require('plugins.impatient') end },
-  'nathom/filetype.nvim',
   { 
     'neovim/nvim-lspconfig', 
+    event = "BufRead",
     config = function () require('plugins.lsp') end,
     dependencies = {
       { 
         "williamboman/mason-lspconfig.nvim", config = function() require('mason-lspconfig').setup({ automatic_installation = true }) end,
-        dependencies = { "williamboman/mason.nvim", config = function() require('mason').setup() end, }
+        dependencies = { 
+          "williamboman/mason.nvim", config = function() require('mason').setup() end, 
+        },
       },
     }
   },
@@ -46,7 +60,23 @@ return require("lazy").setup({
   },
   { 
     'jose-elias-alvarez/null-ls.nvim', 
-    event = 'InsertEnter',
+    event = "InsertEnter",
     config = function() require('plugins.null-ls') end, 
     dependencies = { 'nvim-lua/plenary.nvim' } },
-})
+}, {
+    performance = {
+      rtp = {
+        disabled_plugins = {
+          "gzip",
+          "matchit",
+          "matchparen",
+          "netrwPlugin",
+          "tarPlugin",
+          "tohtml",
+          "tutor",
+          "zipPlugin",
+        },
+      },
+    },
+  }
+)
