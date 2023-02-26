@@ -22,8 +22,10 @@ local options = {
   shell = "/bin/bash", -- set shell
   updatetime = 50,
   ruler = false,
-  showmode = false,
+  showmode = false, -- insert, visual mode message on the last line
   showcmd = false,
+  undofile = true,
+  wrap = false,
 }
 vim.g.mapleader = " "
 
@@ -36,4 +38,5 @@ vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
-vim.wo.fillchars = 'eob: '
+-- vim.wo.fillchars = 'eob: ' -- disable '~' blank lines
+vim.opt.fillchars:append('eob: ')

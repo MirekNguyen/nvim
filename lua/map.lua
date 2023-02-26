@@ -24,6 +24,7 @@ nmap("<leader>k", ":NvimTreeToggle")
 -- Telescope
 nmap("<leader>f", ":Telescope find_files");
 nmap("<leader>j", ":Telescope live_grep");
+nmap("<leader>g", ":lua require'telescope.builtin'.git_files{}");
 -- Barbar
 nmap("<A-[>", ":BufferPrevious")
 nmap("<A-]>", ":BufferNext")
@@ -45,5 +46,16 @@ nmap("<A-w>", ":BufferClose")
 nmap("<A-s>", ":BufferPick")
 nmap("<C-d>", "<C-d>zz")
 nmap("<C-u>", "<C-u>zz")
+
+nmap("ga", ":Lspsaga code_action")
+nmap("gf", ":Lspsaga lsp_finder")
+nmap("K", ":Lspsaga hover_doc")
+nmap("L", ":Lspsaga peek_definition")
+nmap("gr", ":Lspsaga rename")
+nmap("go", ":Lspsaga outline")
+nmap("gd", ":Lspsaga goto_definition")
+nmap("<leader>l", ":UndotreeToggle")
+nmap("<leader>s", ":Gitsigns toggle_signs")
+nmap("<leader>S", ":Gitsigns preview_hunk_inline")
 
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
