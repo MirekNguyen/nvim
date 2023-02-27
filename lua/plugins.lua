@@ -14,20 +14,20 @@ return require("lazy").setup({
   { 'kyazdani42/nvim-tree.lua', config = function() require('plugins.nvim-tree') end, cmd = { 'NvimTreeToggle' } },
   { 
     'romgrk/barbar.nvim', 
-    event = "BufReadPost",
+    event = {"BufReadPost", "BufNewFile"},
     config = function() require('plugins.barbar') end, 
     dependencies = { 'kyazdani42/nvim-web-devicons' }
   },
   { 'nvim-telescope/telescope.nvim', cmd = "Telescope", dependencies = { 'nvim-lua/plenary.nvim' } },
   { 
     'nvim-treesitter/nvim-treesitter',
-    event = "BufReadPost",
+    event = {"BufReadPost", "BufNewFile"},
     config = function() require('plugins.treesitter') end,
     build = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   },
   { 
     'neovim/nvim-lspconfig', 
-    event = "BufReadPost",
+    event = {"BufReadPost", "BufNewFile"},
     config = function () require('plugins.lsp') end,
     dependencies = {
       { 
@@ -54,7 +54,7 @@ return require("lazy").setup({
   },
   { 
     'jose-elias-alvarez/null-ls.nvim', 
-    event = "BufReadPost",
+    event = {"BufReadPost", "BufNewFile"},
     config = function() require('plugins.null-ls') end, 
     dependencies = { 'nvim-lua/plenary.nvim' } 
   },
