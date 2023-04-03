@@ -84,7 +84,7 @@ return require("lazy").setup({
           "gzip", -- edit zip files
           "matchit", -- match XML tags using '%'
           "matchparen", -- highlight matching brackets
-          "netrwPlugin",
+          -- "netrwPlugin",
           "tarPlugin", -- edit tar files
           "tohtml",
           "tutor",

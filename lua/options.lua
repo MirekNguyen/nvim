@@ -23,6 +23,8 @@ local options = {
   showmode = false, -- insert, visual mode message on the last line
   showcmd = false, -- show last pressed keys in status line
   fillchars = 'eob: ', -- disable '~' blank lines
+  writebackup = false,
+  backup = false,
 }
 vim.g.mapleader = " "
 
