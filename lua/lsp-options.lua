@@ -24,5 +24,6 @@ local servers = {
     on_attach = omnisharp_fix(),
   },
   tsserver = { on_attach = formattingOff() },
+  smarty_ls = {},
 }
 return servers
