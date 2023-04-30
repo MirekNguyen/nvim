@@ -82,8 +82,8 @@ return require("lazy").setup({
       rtp = {
         disabled_plugins = {
           "gzip", -- edit zip files
-          "matchit", -- match XML tags using '%'
-          "matchparen", -- highlight matching brackets
+          -- "matchit", -- match XML tags using '%'
+          -- "matchparen", -- highlight matching brackets
           -- "netrwPlugin",
           "tarPlugin", -- edit tar files
           "tohtml",

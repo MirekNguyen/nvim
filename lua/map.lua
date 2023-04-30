@@ -57,5 +57,6 @@ nmap("gd", ":Lspsaga goto_definition")
 nmap("<leader>l", ":UndotreeToggle")
 nmap("<leader>s", ":Gitsigns toggle_signs")
 nmap("<leader>S", ":Gitsigns preview_hunk_inline")
+nmap("<leader>w", ":lua vim.lsp.buf.format()")
 
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+-- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]

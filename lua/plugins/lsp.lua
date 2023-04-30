@@ -14,12 +14,9 @@ end
 -- Setup lspconfig.
 local servers = require('lsp-options')
 
-for _, server in pairs(servers) do
-  lspconfig[server.name].setup {
-    capabilities = (server.capabilities or capabilities),
-    filetypes = (server.filetypes or nil),
-    root_dir = (server.root_dir or root_dir),
-    on_attach = (server.on_attach or nil),
-    init_options = (server.init_options or nil),
-  }
+for server, args in pairs(servers) do
+  local config = args or {} 
+  config.capabilities = (args.capabilities or capabilities)
+  config.root_dir = (args.root_dir or root_dir)
+  lspconfig[server].setup(config)
 end
