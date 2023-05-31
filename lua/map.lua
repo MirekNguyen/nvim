@@ -29,21 +29,21 @@ nmap("<leader>g", ":lua require'telescope.builtin'.git_files{}");
 nmap("<A-[>", ":BufferPrevious")
 nmap("<A-]>", ":BufferNext")
 -- Goto buffer in position...
-nmap("<A-1>", ":BufferGoto 1")
-nmap("<A-2>", ":BufferGoto 2")
-nmap("<A-3>", ":BufferGoto 3")
-nmap("<A-4>", ":BufferGoto 4")
-nmap("<A-5>", ":BufferGoto 5")
-nmap("<A-6>", ":BufferGoto 6")
-nmap("<A-7>", ":BufferGoto 7")
-nmap("<A-8>", ":BufferGoto 8")
-nmap("<A-9>", ":BufferLast")
+nmap("<C-1>", ":BufferGoto 1")
+nmap("<C-2>", ":BufferGoto 2")
+nmap("<C-3>", ":BufferGoto 3")
+nmap("<C-4>", ":BufferGoto 4")
+nmap("<C-5>", ":BufferGoto 5")
+nmap("<C-6>", ":BufferGoto 6")
+nmap("<C-7>", ":BufferGoto 7")
+nmap("<C-8>", ":BufferGoto 8")
+nmap("<C-9>", ":BufferLast")
 -- Pin/unpin buffer
-nmap("<A-p>", ":BufferPin")
+nmap("<C-p>", ":BufferPin")
 -- Close buffer
-nmap("<A-w>", ":BufferClose")
+nmap("<C-w>", ":BufferClose")
 -- Magic buffer-picking mode
-nmap("<A-s>", ":BufferPick")
+nmap("<C-s>", ":BufferPick")
 nmap("<C-d>", "<C-d>zz")
 nmap("<C-u>", "<C-u>zz")
 
