@@ -25,8 +25,11 @@ local options = {
   fillchars = 'eob: ', -- disable '~' blank lines
   writebackup = false,
   backup = false,
+  title = true,
+  titlestring='%t',
 }
 vim.g.mapleader = " "
+vim.lsp.set_log_level("off")
 
 for key, value in pairs(options) do
   vim.opt[key] = value
