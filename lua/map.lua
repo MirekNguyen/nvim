@@ -29,19 +29,19 @@ nmap("<leader>g", ":lua require'telescope.builtin'.git_files{}");
 nmap("<A-[>", ":BufferPrevious")
 nmap("<A-]>", ":BufferNext")
 -- Goto buffer in position...
-nmap("<C-1>", ":BufferGoto 1")
-nmap("<C-2>", ":BufferGoto 2")
-nmap("<C-3>", ":BufferGoto 3")
-nmap("<C-4>", ":BufferGoto 4")
-nmap("<C-5>", ":BufferGoto 5")
-nmap("<C-6>", ":BufferGoto 6")
-nmap("<C-7>", ":BufferGoto 7")
-nmap("<C-8>", ":BufferGoto 8")
-nmap("<C-9>", ":BufferLast")
+nmap("<leader>1", ":BufferGoto 1")
+nmap("<leader>2", ":BufferGoto 2")
+nmap("<leader>3", ":BufferGoto 3")
+nmap("<leader>4", ":BufferGoto 4")
+nmap("<leader>5", ":BufferGoto 5")
+nmap("<leader>6", ":BufferGoto 6")
+nmap("<leader>7", ":BufferGoto 7")
+nmap("<leader>8", ":BufferGoto 8")
+nmap("<leader>9", ":BufferLast")
 -- Pin/unpin buffer
 nmap("<C-p>", ":BufferPin")
 -- Close buffer
-nmap("<C-w>", ":BufferClose")
+nmap("<leader>q", ":BufferClose")
 -- Magic buffer-picking mode
 nmap("<C-s>", ":BufferPick")
 nmap("<C-d>", "<C-d>zz")
@@ -58,5 +58,7 @@ nmap("<leader>l", ":UndotreeToggle")
 nmap("<leader>s", ":Gitsigns toggle_signs")
 nmap("<leader>S", ":Gitsigns preview_hunk_inline")
 nmap("<leader>w", ":lua vim.lsp.buf.format()")
+
+nmap("<leader>a", "<C-w>w")
 
 -- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
