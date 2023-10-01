@@ -1,64 +1,60 @@
-local function nmap(shortcut, command)
-  vim.api.nvim_set_keymap("n", shortcut, command .. '<CR>', { noremap = true, silent = true })
-end
-
-local function vmap(shortcut, command)
-  vim.api.nvim_set_keymap("v", shortcut, command .. '<CR>', { noremap = true, silent = true })
+local function map(mode, shortcut, command)
+  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
 
 -- normal
-nmap("<leader>yy", "\"+yy")
-nmap("<leader>Y", "\"+Y")
-nmap("<leader>dd", "\"+dd")
-nmap("<leader>p", "\"+p")
-nmap("<leader>P", "\"+P")
+map("n", "<leader>yy", "\"+yy")
+map("n", "<leader>Y", "\"+Y")
+map("n", "<leader>dd", "\"+dd")
+map("n", "<leader>p", "\"+p")
+map("n", "<leader>P", "\"+P")
 
 -- visual
-vmap("<leader>y", "\"+y")
-vmap("<leader>d", "\"+d")
-vmap("<leader>p", "\"+p")
-vmap("<leader>P", "\"+P")
+map("v", "<leader>y", "\"+y")
+map("v", "<leader>d", "\"+d")
+map("v", "<leader>p", "\"+p")
+map("v", "<leader>P", "\"+P")
 
 -- NvimTree
-nmap("<leader>k", ":NvimTreeToggle")
+map("n", "<leader>k", ":NvimTreeToggle<CR>")
 -- Telescope
-nmap("<leader>f", ":Telescope find_files");
-nmap("<leader>j", ":Telescope live_grep");
-nmap("<leader>g", ":lua require'telescope.builtin'.git_files{}");
+map("n", "<leader>f", ":Telescope find_files<CR>");
+map("n", "<leader>j", ":Telescope live_grep<CR>");
+map("n", "<leader>g", ":lua require'telescope.builtin'.git_files{}<CR>");
 -- Barbar
-nmap("<A-[>", ":BufferPrevious")
-nmap("<A-]>", ":BufferNext")
+map("n", "<A-[>", ":BufferPrevious<CR>")
+map("n", "<A-]>", ":BufferNext<CR>")
 -- Goto buffer in position...
-nmap("<leader>1", ":BufferGoto 1")
-nmap("<leader>2", ":BufferGoto 2")
-nmap("<leader>3", ":BufferGoto 3")
-nmap("<leader>4", ":BufferGoto 4")
-nmap("<leader>5", ":BufferGoto 5")
-nmap("<leader>6", ":BufferGoto 6")
-nmap("<leader>7", ":BufferGoto 7")
-nmap("<leader>8", ":BufferGoto 8")
-nmap("<leader>9", ":BufferLast")
+map("n", "<leader>1", ":BufferGoto 1<CR>")
+map("n", "<leader>2", ":BufferGoto 2<CR>")
+map("n", "<leader>3", ":BufferGoto 3<CR>")
+map("n", "<leader>4", ":BufferGoto 4<CR>")
+map("n", "<leader>5", ":BufferGoto 5<CR>")
+map("n", "<leader>6", ":BufferGoto 6<CR>")
+map("n", "<leader>7", ":BufferGoto 7<CR>")
+map("n", "<leader>8", ":BufferGoto 8<CR>")
+map("n", "<leader>9", ":BufferLast")
 -- Pin/unpin buffer
-nmap("<C-p>", ":BufferPin")
+map("n", "<C-p>", ":BufferPin<CR>")
 -- Close buffer
-nmap("<leader>q", ":BufferClose")
+map("n", "<leader>q", ":BufferClose<CR>")
 -- Magic buffer-picking mode
-nmap("<C-s>", ":BufferPick")
-nmap("<C-d>", "<C-d>zz")
-nmap("<C-u>", "<C-u>zz")
+map("n", "<C-s>", ":BufferPick<CR>")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
 
-nmap("ga", ":Lspsaga code_action")
-nmap("gf", ":Lspsaga lsp_finder")
-nmap("K", ":Lspsaga hover_doc")
-nmap("L", ":Lspsaga peek_definition")
-nmap("gr", ":Lspsaga rename")
-nmap("go", ":Lspsaga outline")
-nmap("gd", ":Lspsaga goto_definition")
-nmap("<leader>l", ":UndotreeToggle")
-nmap("<leader>s", ":Gitsigns toggle_signs")
-nmap("<leader>S", ":Gitsigns preview_hunk_inline")
-nmap("<leader>w", ":lua vim.lsp.buf.format()")
+map("n", "ga", ":Lspsaga code_action<CR>")
+map("n", "gf", ":Lspsaga lsp_finder<CR>")
+map("n", "K", ":Lspsaga hover_doc<CR>")
+map("n", "L", ":Lspsaga peek_definition<CR>")
+map("n", "gr", ":Lspsaga rename<CR>")
+map("n", "go", ":Lspsaga outline<CR>")
+map("n", "gd", ":Lspsaga goto_definition<CR>")
+map("n", "<leader>l", ":UndotreeToggle<CR>")
+map("n", "<leader>s", ":Gitsigns toggle_signs<CR>")
+map("n", "<leader>S", ":Gitsigns preview_hunk_inline<CR>")
+map("n", "<leader>w", ":lua vim.lsp.buf.format()<CR>")
 
-nmap("<leader>a", "<C-w>w")
+map("n", "<leader>a", "<C-w>w")
 
 -- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
