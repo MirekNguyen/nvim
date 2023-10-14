@@ -20,7 +20,8 @@ local servers = {
   jsonls = { on_attach = formattingOff() },
   intelephense = { 
     on_attach = formattingOff(), 
-    init_options = { globalStoragePath = os.getenv('HOME') .. '/.local/share/intelephense' }
+    init_options = { globalStoragePath = os.getenv('HOME') .. '/.local/share/intelephense' },
+    root_dir = require('lspconfig').util.root_pattern("composer.json", ".git")
   },
   omnisharp = { 
     cmd = { "dotnet", "/Users/mireknguyen/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll" },
