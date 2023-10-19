@@ -3,3 +3,4 @@ plugin/packer_compiled.lua
 plugin/
 .DS_Store
 lazy-lock.json
+lua/lsp-options-custom.lua

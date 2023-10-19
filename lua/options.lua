@@ -28,14 +28,19 @@ local options = {
   title = true,
   titlestring='%t',
 }
-vim.g.mapleader = " "
-vim.lsp.set_log_level("off")
+local global_options = {
+  loaded_python3_provider = 0,
+  loaded_ruby_provider = 0,
+  loaded_node_provider = 0,
+  loaded_perl_provider = 0,
+  mapleader = " ",
+}
 
+vim.lsp.set_log_level("off")
 for key, value in pairs(options) do
   vim.opt[key] = value
 end
 
-vim.g.loaded_python3_provider = 0
-vim.g.loaded_ruby_provider = 0
-vim.g.loaded_node_provider = 0
-vim.g.loaded_perl_provider = 0
+for key, value in pairs(global_options) do
+  vim.g[key] = value
+end

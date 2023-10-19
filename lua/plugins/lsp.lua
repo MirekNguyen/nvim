@@ -11,13 +11,24 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
--- Setup lspconfig.
-local servers = require('lsp-options')
+-- Check if lsp-options-custom.lua exists
+local user_lsp_config_path = vim.fn.stdpath('config')..'/lua/lsp-options-custom.lua'
+local lsp_options
+
+if vim.fn.filereadable(user_lsp_config_path) == 1 then
+  lsp_options = require'lsp-options-custom'
+else
+  lsp_options = require'lsp-options'
+end
+local servers = lsp_options.servers
 
 for server, args in pairs(servers) do
   local config = args or {} 
   config.capabilities = (args.capabilities or capabilities)
-  config.root_dir = (args.root_dir or root_dir)
+  -- config.root_dir = (args.root_dir or root_dir)
   config.single_file_support = (args.single_file_support or true)
   lspconfig[server].setup(config)
 end
+require'lspconfig'.docker_compose_language_service.setup{
+   filetypes = {"yaml", "yml"},
+}
