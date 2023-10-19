@@ -12,7 +12,6 @@ return {
     jsonls = {},
     intelephense = { 
       init_options = { globalStoragePath = os.getenv('HOME') .. '/.local/share/intelephense' },
-      root_dir = require('lspconfig').util.root_pattern("composer.json", ".git")
     },
     dockerls = {},
   },
