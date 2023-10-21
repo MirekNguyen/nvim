@@ -20,7 +20,8 @@ map("n", "<leader>k", ":NvimTreeToggle<CR>")
 -- Telescope
 map("n", "<leader>f", ":Telescope find_files<CR>");
 map("n", "<leader>j", ":Telescope live_grep<CR>");
-map("n", "<leader>g", ":lua require'telescope.builtin'.git_files{}<CR>");
+map("n", "<D-j>", ":Telescope telescope_home<CR>");
+map("n", "<D-k>", ":lua require'telescope.builtin'.git_files{show_untracked=true}<CR>");
 -- Barbar
 map("n", "<A-[>", ":BufferPrevious<CR>")
 map("n", "<A-]>", ":BufferNext<CR>")
@@ -44,8 +45,8 @@ map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
 map("n", "ga", ":Lspsaga code_action<CR>")
-map("n", "gf", ":Lspsaga lsp_finder<CR>")
-map("n", "K", ":Lspsaga hover_doc<CR>")
+map("n", "gf", ":Lspsaga finder<CR>")
+map("n", "K", ":Lspsaga hover_doc ++keep<CR>")
 map("n", "L", ":Lspsaga peek_definition<CR>")
 map("n", "gr", ":Lspsaga rename<CR>")
 map("n", "go", ":Lspsaga outline<CR>")

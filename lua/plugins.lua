@@ -10,7 +10,6 @@ return require("lazy").setup({
       vim.cmd([[colorscheme gruvbox]])
     end
   },
-
   { 'kyazdani42/nvim-tree.lua', config = function() require('plugins.nvim-tree') end, cmd = { 'NvimTreeToggle' } },
   { 
     'romgrk/barbar.nvim', 
@@ -18,7 +17,27 @@ return require("lazy").setup({
     config = function() require('plugins.barbar') end, 
     dependencies = { 'kyazdani42/nvim-web-devicons' }
   },
-  { 'nvim-telescope/telescope.nvim', cmd = "Telescope", dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'nvim-telescope/telescope.nvim', config = function() 
+    require('telescope').setup {
+      extensions = {
+        fzf = {
+          fuzzy = true,                    -- false will only do exact matching
+          override_generic_sorter = true,  -- override the generic sorter
+          override_file_sorter = true,     -- override the file sorter
+          case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+          -- the default case_mode is "smart_case"
+        }
+      }
+    }
+    require('telescope').load_extension('telescope_home') 
+    require('telescope').load_extension('fzf')
+  end,
+  cmd = "Telescope", dependencies = { 
+      'nvim-lua/plenary.nvim',
+      'mireknguyen/telescope-home.nvim',
+      'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+    } 
+  },
   { 
     'nvim-treesitter/nvim-treesitter',
     event = {"BufReadPost", "BufNewFile"},
@@ -54,24 +73,22 @@ return require("lazy").setup({
   },
   { 
     'jose-elias-alvarez/null-ls.nvim', 
-    event = {"BufReadPost", "BufNewFile"},
+    -- event = {"BufReadPost", "BufNewFile"},
+    event = "LspAttach",
     config = function() require('plugins.null-ls') end, 
     dependencies = { 'nvim-lua/plenary.nvim' } 
   },
   {
     "glepnir/lspsaga.nvim",
-    event = "InsertEnter",
+    event = "LspAttach",
     config = function()
         require("lspsaga").setup({
-        symbol_in_winbar = {
-          enable = false,
-        },
-        diagnostic = {
-          on_insert = false,
-        },
-        lightbulb = {
-          sign = false
-        }
+          symbol_in_winbar = {
+            enable = false,
+          },
+          lightbulb = {
+            sign = false
+          }
         })
     end,
   },
@@ -84,7 +101,7 @@ return require("lazy").setup({
           "gzip", -- edit zip files
           -- "matchit", -- match XML tags using '%'
           -- "matchparen", -- highlight matching brackets
-          -- "netrwPlugin",
+          "netrwPlugin",
           "tarPlugin", -- edit tar files
           "tohtml",
           "tutor",
