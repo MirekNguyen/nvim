@@ -35,7 +35,7 @@ return require("lazy").setup({
   cmd = "Telescope", dependencies = { 
       'nvim-lua/plenary.nvim',
       'mireknguyen/telescope-home.nvim',
-      'nvim-telescope/telescope-fzf-native.nvim', build = 'make',
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     } 
   },
   { 
