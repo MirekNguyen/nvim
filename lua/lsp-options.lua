@@ -14,6 +14,7 @@ return {
       init_options = { globalStoragePath = os.getenv('HOME') .. '/.local/share/intelephense' },
     },
     dockerls = {},
+    lua_ls = {},
   },
   sources = function(null_ls)
     return {

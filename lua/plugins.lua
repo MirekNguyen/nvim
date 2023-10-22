@@ -12,12 +12,12 @@ return require("lazy").setup({
   },
   { 'kyazdani42/nvim-tree.lua', config = function() require('plugins.nvim-tree') end, cmd = { 'NvimTreeToggle' } },
   { 
-    'romgrk/barbar.nvim', 
+    'romgrk/barbar.nvim',
     event = {"BufReadPost", "BufNewFile"},
-    config = function() require('plugins.barbar') end, 
+    config = function() require('plugins.barbar') end,
     dependencies = { 'kyazdani42/nvim-web-devicons' }
   },
-  { 'nvim-telescope/telescope.nvim', config = function() 
+  { 'nvim-telescope/telescope.nvim', config = function()
     require('telescope').setup {
       extensions = {
         fzf = {
@@ -26,31 +26,35 @@ return require("lazy").setup({
           override_file_sorter = true,     -- override the file sorter
           case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
           -- the default case_mode is "smart_case"
+        },
+        telescope_path = {
+          search_dir = "$HOME",
+          ignore_file = "$HOME/.config/dotfiles/config/fdignore",
         }
       }
     }
-    require('telescope').load_extension('telescope_home') 
+    require('telescope').load_extension('telescope_path')
     require('telescope').load_extension('fzf')
   end,
-  cmd = "Telescope", dependencies = { 
+  cmd = "Telescope", dependencies = {
       'nvim-lua/plenary.nvim',
-      'mireknguyen/telescope-home.nvim',
+      'mireknguyen/telescope-path.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    } 
+    }
   },
-  { 
+  {
     'nvim-treesitter/nvim-treesitter',
     event = {"BufReadPost", "BufNewFile"},
     config = function() require('plugins.treesitter') end,
     build = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   },
-  { 
+  {
     'neovim/nvim-lspconfig', 
     event = {"BufReadPost", "BufNewFile"},
     cmd = "Mason",
     config = function () require('plugins.lsp') end,
     dependencies = {
-      { 
+      {
         "williamboman/mason-lspconfig.nvim", config = function() require('mason-lspconfig').setup({ automatic_installation = true }) end,
         dependencies = { 
           "williamboman/mason.nvim", config = function() require('mason').setup() end, 
@@ -58,7 +62,7 @@ return require("lazy").setup({
       },
     }
   },
-  { 
+  {
     'hrsh7th/nvim-cmp',
     event = "InsertEnter",
     config = function() require('plugins.lsp-cmp') end,
@@ -72,12 +76,12 @@ return require("lazy").setup({
       'saadparwaiz1/cmp_luasnip',
     }
   },
-  { 
-    'jose-elias-alvarez/null-ls.nvim', 
+  {
+    'jose-elias-alvarez/null-ls.nvim',
     -- event = {"BufReadPost", "BufNewFile"},
     event = "LspAttach",
-    config = function() require('plugins.null-ls') end, 
-    dependencies = { 'nvim-lua/plenary.nvim' } 
+    config = function() require('plugins.null-ls') end,
+    dependencies = { 'nvim-lua/plenary.nvim' }
   },
   {
     "glepnir/lspsaga.nvim",

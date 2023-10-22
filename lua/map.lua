@@ -20,7 +20,7 @@ map("n", "<leader>k", ":NvimTreeToggle<CR>")
 -- Telescope
 map("n", "<leader>f", ":Telescope find_files<CR>");
 map("n", "<leader>j", ":Telescope live_grep<CR>");
-map("n", "<D-j>", ":Telescope telescope_home<CR>");
+map("n", "<D-j>", ":Telescope telescope_path<CR>");
 map("n", "<D-k>", ":lua require'telescope.builtin'.git_files{show_untracked=true}<CR>");
 -- Barbar
 map("n", "<A-[>", ":BufferPrevious<CR>")
