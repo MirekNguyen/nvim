@@ -47,6 +47,7 @@ return require("lazy").setup({
   { 
     'neovim/nvim-lspconfig', 
     event = {"BufReadPost", "BufNewFile"},
+    cmd = "Mason",
     config = function () require('plugins.lsp') end,
     dependencies = {
       { 
@@ -101,7 +102,7 @@ return require("lazy").setup({
           "gzip", -- edit zip files
           -- "matchit", -- match XML tags using '%'
           -- "matchparen", -- highlight matching brackets
-          "netrwPlugin",
+          -- "netrwPlugin",
           "tarPlugin", -- edit tar files
           "tohtml",
           "tutor",
