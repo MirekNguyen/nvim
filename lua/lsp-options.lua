@@ -15,6 +15,7 @@ return {
     },
     dockerls = {},
     lua_ls = {},
+    rust_analyzer = {},
   },
   sources = function(null_ls)
     return {
@@ -30,6 +31,7 @@ return {
       null_ls.builtins.formatting.isort,
       null_ls.builtins.formatting.black,
       null_ls.builtins.formatting.stylua,
+      null_ls.builtins.formatting.rustfmt,
     }
   end
 }
