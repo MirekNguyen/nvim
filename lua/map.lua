@@ -58,4 +58,6 @@ map("n", "<leader>w", ":lua vim.lsp.buf.format()<CR>")
 
 map("n", "<leader>a", "<C-w>w")
 
+map("n", "<D-o>", ":ChatGPT<CR>")
+
 -- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
