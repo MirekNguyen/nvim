@@ -143,6 +143,10 @@ return require("lazy").setup({
         chat = {
           openai_params = {
             model = "gpt-4",
+            max_tokens = 600,
+          },
+          keymaps = {
+            select_session = "o",
           }
         }
       })
