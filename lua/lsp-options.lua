@@ -10,7 +10,7 @@ return {
     tsserver = {},
     html = {},
     jsonls = {},
-    intelephense = { 
+    intelephense = {
       init_options = { globalStoragePath = os.getenv('HOME') .. '/.local/share/intelephense' },
     },
     dockerls = {},
@@ -25,6 +25,7 @@ return {
         end,
       }),
       null_ls.builtins.diagnostics.phpcs.with({ extra_args = { "--standard=PSR12" } }),
+      null_ls.builtins.diagnostics.phpstan,
       null_ls.builtins.formatting.phpcsfixer,
       null_ls.builtins.code_actions.shellcheck,
       null_ls.builtins.diagnostics.shellcheck,
