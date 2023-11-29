@@ -1,10 +1,35 @@
 # Introduction
-This repo is a Neovim configuration for UNIX systems (Linux, MacOS) running Neovim 0.7 and higher.
+My blazingly fast neovim configuration. Most plugins are lazy loaded.
 
-# Install and Setup
-### Prerequisities
-* Neovim 0.7 and higher
-* Packer via [packer.nvim](https://github.com/wbthomason/packer.nvim)
+# Requirements
 
-I haven't implemented an installer yet. You have to clone this repository into configuration folder e.g. '~/.config/'.
-Install using a command in neovim ':PackerSync' (ignore first error messages after initial start)
+- Neovim - latest stable version
+- C compiler for nvim-treesitter - clangd, gcc
+- npm for mason.nvim
+- git
+- curl or wget
+
+## Optional dependencies
+
+- Telescope support (optional)
+    - fd
+    - fzf
+    - rg
+    - bat
+# Installation
+
+- optionally replace `$HOME` with `$XDG_CONFIG_HOME`
+```
+git clone https://github.com/MirekNguyen/nvim "$HOME/.config/nvim"
+```
+
+# Installation of dependencies
+
+- MacOS
+```
+brew update && brew install fd-find fzf ripgrep nvim node bat
+```
+- Linux Fedora
+```
+dnf update && dnf install fd-find fzf ripgrep nvim node bat gcc-c++
+```
