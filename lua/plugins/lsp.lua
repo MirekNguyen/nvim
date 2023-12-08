@@ -22,7 +22,7 @@ end
 local servers = lsp_options.servers
 
 for server, args in pairs(servers) do
-  local config = args or {} 
+  local config = args or {}
   config.capabilities = (args.capabilities or capabilities)
   config.single_file_support = (args.single_file_support or true)
   lspconfig[server].setup(config)

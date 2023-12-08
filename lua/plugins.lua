@@ -11,7 +11,18 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 return require("lazy").setup({
-	{
+  { "MirekNguyen/czech-diacritics.nvim", config = true, cmd = "AddDiacritics" },
+  {
+    "uga-rosa/translate.nvim",
+    config = {
+      default = {
+        command = "google",
+        output = "replace",
+      },
+    },
+    cmd = "Translate"
+  },
+  {
 		"ellisonleao/gruvbox.nvim",
 		config = function()
 			vim.cmd([[colorscheme gruvbox]])
@@ -113,7 +124,7 @@ return require("lazy").setup({
 	},
 	{
 		"nvimtools/none-ls.nvim",
-		event = "LspAttach",
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("plugins.null-ls")
 		end,
