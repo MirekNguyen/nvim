@@ -11,6 +11,15 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 return require("lazy").setup({
+  {
+    "folke/zen-mode.nvim",
+    config = {
+      window = {
+        width = .5 -- width will be 85% of the editor width
+      }
+    },
+    cmd = "ZenMode"
+  },
   { "MirekNguyen/czech-diacritics.nvim", config = true, cmd = "AddDiacritics" },
   {
     "uga-rosa/translate.nvim",
