@@ -42,9 +42,10 @@ return {
       null_ls.builtins.diagnostics.phpcs.with({ extra_args = { "--standard=PSR12" } }),
       null_ls.builtins.formatting.phpcsfixer.with({ extra_args = { "--using-cache=no" } }),
       null_ls.builtins.diagnostics.twigcs,
+      null_ls.builtins.formatting.blade_formatter,
       -- bash
       null_ls.builtins.code_actions.shellcheck,
-      null_ls.builtins.diagnostics.shellcheck,
+      -- null_ls.builtins.diagnostics.shellcheck,
       -- python
       null_ls.builtins.formatting.isort,
       null_ls.builtins.formatting.black,
