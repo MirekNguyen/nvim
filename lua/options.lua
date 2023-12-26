@@ -27,6 +27,8 @@ local options = {
   backup = false,
   title = true,
   titlestring='%t',
+  splitright = true, -- vertical split to the right
+  -- cmdheight = 0, -- cmdline height
 }
 local global_options = {
   loaded_python3_provider = 0,
