@@ -11,15 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 return require("lazy").setup({
-  {
-    "folke/zen-mode.nvim",
-    config = {
-      window = {
-        width = .5 -- width will be 85% of the editor width
-      }
-    },
-    cmd = "ZenMode"
-  },
   { "MirekNguyen/czech-diacritics.nvim", config = true, cmd = "AddDiacritics" },
   {
     "uga-rosa/translate.nvim",
@@ -157,13 +148,16 @@ return require("lazy").setup({
 	{ "lewis6991/gitsigns.nvim", opts = { signcolumn = false }, cmd = "Gitsigns" },
   {
     "jackMort/ChatGPT.nvim",
-    cmd = "ChatGPT",
+    cmd = { "ChatGPT", "ChatGPTRun" },
     config = function()
       require("chatgpt").setup({
         chat = {
           openai_params = {
-            model = "gpt-4",
-            max_tokens = 600,
+            model = "gpt-3.5-turbo",
+            max_tokens = 300,
+          },
+          openai_edit_params = {
+            model = "gpt-3.5-turbo",
           },
           keymaps = {
             select_session = "o",
@@ -175,6 +169,41 @@ return require("lazy").setup({
       "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim"
+    }
+  },
+  {
+    "folke/zen-mode.nvim",
+    config = {
+      window = {
+        width = .5
+      }
+    },
+    cmd = "ZenMode"
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = {
+      panel = {
+        enabled = true,
+        auto_refresh = true, -- auto refresh panel
+        layout = {
+          position = "right", -- | top | left | right
+          ratio = 0.4 -- width of the panel, when position is left or right
+        },
+      },
+      suggestion = {
+        enabled = true, -- enable suggestions
+        auto_trigger = true, -- automatically show suggestions
+        accept = false, -- disable built-in keymapping
+        keymap = {
+          accept = "<C-f>",
+          next = "<C-;>",
+          prev = "<C-'>",
+          dismiss = '<C-\\>',
+        }
+      }
     }
   },
 }, {
