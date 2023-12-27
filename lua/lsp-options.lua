@@ -3,7 +3,9 @@ return {
     texlab = {},
     bashls = {},
     pyright = {},
-    clangd = {},
+    clangd = {
+       cmd = { "clangd", "--offset-encoding=utf-16" }
+    },
     cssls = {},
     eslint = {},
     emmet_language_server = {
