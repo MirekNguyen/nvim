@@ -154,7 +154,7 @@ return require("lazy").setup({
         chat = {
           openai_params = {
             model = "gpt-3.5-turbo",
-            max_tokens = 300,
+            max_tokens = 4096,
           },
           openai_edit_params = {
             model = "gpt-3.5-turbo",
