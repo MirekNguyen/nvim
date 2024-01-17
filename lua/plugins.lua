@@ -11,6 +11,21 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 return require("lazy").setup({
+  {
+    "kawre/leetcode.nvim",
+    lazy = "leetcode.nvim" ~= vim.fn.argv()[1],
+    config = true,
+  },
+  {
+    'mikesmithgh/kitty-scrollback.nvim',
+    enabled = true,
+    lazy = true,
+    cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth' },
+    event = { 'User KittyScrollbackLaunch' },
+    config = function()
+      require('kitty-scrollback').setup()
+    end,
+  },
   { "MirekNguyen/czech-diacritics.nvim", config = true, cmd = "AddDiacritics" },
   {
     "uga-rosa/translate.nvim",
@@ -207,6 +222,7 @@ return require("lazy").setup({
       }
     }
   },
+  { 'gptlang/CopilotChat.nvim', cmd = {"CopilotChat"} }
 }, {
 	performance = {
 		rtp = {
@@ -219,7 +235,7 @@ return require("lazy").setup({
 				"tohtml",
 				"tutor",
 				"zipPlugin",
-				"rplugin", -- remote plugins
+				-- "rplugin", -- remote plugins
 				"spellfile",
 				"man", -- ':Man' command (man pages)
 				"shada", -- search, command history, marks
