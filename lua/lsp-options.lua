@@ -15,6 +15,7 @@ return {
       }
     },
     tailwindcss = { filetypes = { "typescriptreact", "javascriptreact" } },
+    svelte = {},
     tsserver = {},
     html = {
       filetypes = { "html", "twig", "blade" }
@@ -24,6 +25,7 @@ return {
       init_options = { globalStoragePath = os.getenv('HOME') .. '/.local/share/intelephense' },
     },
     dockerls = {},
+    docker_compose_language_service = {},
     lua_ls = {
       settings = {
         Lua = {
@@ -35,6 +37,7 @@ return {
     },
     rust_analyzer = {},
     yamlls = {},
+    taplo = {},
     sqlls = {},
   },
   sources = function(null_ls)
