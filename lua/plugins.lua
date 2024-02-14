@@ -11,6 +11,85 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 return require("lazy").setup({
+  -- { "adalessa/laravel.nvim", config = true, event = "VeryLazy",   dependencies = {
+  --   "nvim-telescope/telescope.nvim",
+  --   "tpope/vim-dotenv",
+  --   "MunifTanjim/nui.nvim",
+  --   "nvimtools/none-ls.nvim",
+  -- }, },
+  -- {"lvimuser/lsp-inlayhints.nvim", lazy = false, config = true },
+  -- { 'simrat39/inlay-hints.nvim', lazy = false, config = true},
+  {
+    "piersolenski/wtf.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {
+      openai_model_id = "gpt-3.5-turbo",
+    },
+    lazy = false
+  },
+  {
+    "luckasRanarison/nvim-devdocs",
+    config = true,
+    cmd = { "DevdocsOpen", "DevdocsOpenFloat", "DevdocsOpenCurrent", "DevdocsOpenCurrentFloat" },
+  },
+  {
+    'fredeeb/tardis.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = true,
+    cmd = "Tardis",
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    config = true,
+    opts = {
+      hint_enable = false
+    }
+  },
+  {
+		"ellisonleao/gruvbox.nvim",
+		config = function()
+			vim.cmd([[colorscheme gruvbox]])
+		end,
+		lazy = false
+	},
+	{
+    'glacambre/firenvim',
+
+    -- Lazy load firenvim
+    -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
+    lazy = not vim.g.started_by_firenvim,
+    build = function()
+        vim.fn["firenvim#install"](0)
+    end
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    config = true,
+    dependencies = {
+      {
+        "mfussenegger/nvim-dap",
+        config = function()
+          local dap = require("dap")
+          dap.adapters.php = {
+            type = 'executable',
+            command = 'node',
+            args = { '/Users/mireknguyen/.local/share/nvim/mason/packages/php-debug-adapter/extension/out/phpDebug.js' }
+          }
+          dap.configurations.php = {
+            {
+              type = 'php',
+              request = 'launch',
+              name = 'Listen for Xdebug',
+              port = 9000
+            }
+          }
+        end,
+      }
+    }
+  },
   {
     "kawre/leetcode.nvim",
     lazy = "leetcode.nvim" ~= vim.fn.argv()[1],
@@ -29,7 +108,7 @@ return require("lazy").setup({
   { "MirekNguyen/czech-diacritics.nvim", config = true, cmd = "AddDiacritics" },
   {
     "uga-rosa/translate.nvim",
-    config = {
+    opts = {
       default = {
         command = "google",
         output = "replace",
@@ -37,13 +116,6 @@ return require("lazy").setup({
     },
     cmd = "Translate"
   },
-  {
-		"ellisonleao/gruvbox.nvim",
-		config = function()
-			vim.cmd([[colorscheme gruvbox]])
-		end,
-		lazy = false,
-	},
 	{
 		"kyazdani42/nvim-tree.lua",
 		config = function()
@@ -90,6 +162,7 @@ return require("lazy").setup({
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPost", "BufNewFile" },
+		version = "v0.9.2",
 		config = function()
 			require("plugins.treesitter")
 		end,
@@ -99,8 +172,9 @@ return require("lazy").setup({
 	},
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPost", "BufNewFile" },
-		cmd = { "Mason", "LspInstall", "LspUninstall", "LspInfo" },
+		lazy = false,
+		-- event = { "BufReadPost", "BufNewFile" },
+		-- cmd = { "Mason", "LspInstall", "LspUninstall", "LspInfo" },
 		config = function()
 			require("plugins.lsp")
 		end,
@@ -188,7 +262,7 @@ return require("lazy").setup({
   },
   {
     "folke/zen-mode.nvim",
-    config = {
+    opts = {
       window = {
         width = .5
       }
@@ -200,7 +274,7 @@ return require("lazy").setup({
     cmd = "Copilot",
     build = ":Copilot auth",
     event = "InsertEnter",
-    config = {
+    opts = {
       panel = {
         enabled = true,
         auto_refresh = true, -- auto refresh panel
@@ -222,7 +296,12 @@ return require("lazy").setup({
       }
     }
   },
-  { 'gptlang/CopilotChat.nvim', cmd = {"CopilotChat"} }
+  { 'jellydn/CopilotChat.nvim',
+    cmd = {"CopilotChat", "CopilotChatExplain", "CopilotChatTests", "CopilotChatReview", "CopilotChatRefactor"},
+    opts = {
+      mode = "split", -- newbuffer or split  , default: newbuffer
+    },
+  }
 }, {
 	performance = {
 		rtp = {
