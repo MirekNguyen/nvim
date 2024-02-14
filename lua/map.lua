@@ -21,7 +21,7 @@ map("n", "<leader>k", ":NvimTreeToggle<CR>")
 map("n", "<leader>f", ":Telescope find_files<CR>");
 map("n", "<leader>j", ":Telescope live_grep<CR>");
 map("n", "<D-j>", ":Telescope telescope_path<CR>");
-map("n", "<D-k>", ":lua require'telescope.builtin'.git_files{show_untracked=true}<CR>");
+map("n", "<D-l>", ":lua require'telescope.builtin'.git_files{show_untracked=true}<CR>");
 -- Barbar
 map("n", "<A-[>", ":BufferPrevious<CR>")
 map("n", "<A-]>", ":BufferNext<CR>")
@@ -53,10 +53,12 @@ map("n", "go", ":Lspsaga outline<CR>")
 map("n", "gd", ":Lspsaga goto_definition<CR>")
 map("n", "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
 map("t", "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
-map("n", "<leader>l", ":UndotreeToggle<CR>")
+map("n", "<leader>g", ":UndotreeToggle<CR>")
 map("n", "<leader>s", ":Gitsigns toggle_signs<CR>")
 map("n", "<leader>S", ":Gitsigns preview_hunk_inline<CR>")
 map("n", "<leader>w", ":lua vim.lsp.buf.format()<CR>")
+
+map("n", "<leader>l", ":lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR> | :LspStart phpactor<CR>")
 
 map("n", "<leader>a", "<C-w>w")
 
