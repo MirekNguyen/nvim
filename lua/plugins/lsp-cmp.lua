@@ -29,14 +29,15 @@ cmp.setup({
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
+    { name = 'vim-dadbod-completion' },
   },
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
-  experimental = {
-    ghost_text = true,
-  },
+  -- experimental = {
+  --   ghost_text = true,
+  -- },
   view = { entries = "custom" },
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -69,16 +70,34 @@ cmp.setup({
 })
 
 -- VSCode highlight
-local function vcom(command) vim.api.nvim_command(command) end
+-- local function vcom(command) vim.api.nvim_command(command) end
+-- 
+-- vcom("highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080")
+-- vcom("highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6")
+-- vcom("highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6")
+-- vcom("highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE")
+-- vcom("highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE")
+-- vcom("highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE")
+-- vcom("highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0")
+-- vcom("highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0")
+-- vcom("highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4")
+-- vcom("highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4")
+-- vcom("highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4")
 
-vcom("highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080")
-vcom("highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6")
-vcom("highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6")
-vcom("highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE")
-vcom("highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE")
-vcom("highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE")
-vcom("highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0")
-vcom("highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0")
-vcom("highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4")
-vcom("highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4")
-vcom("highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4")
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "sql", "mysql", "plsql" },
+  callback = function()
+    require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
+  end,
+})
+
+
+vim.g.completion_chain_complete_list = {
+    sql = {
+        { complete_items = { 'vim-dadbod-completion' } }
+    }
+}
+vim.g.completion_matching_strategy_list = { 'exact', 'substring' }
+vim.g.completion_matching_ignore_case = 1
+

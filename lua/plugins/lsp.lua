@@ -28,20 +28,33 @@ for server, args in pairs(servers) do
   lspconfig[server].setup(config)
 end
 
-lspconfig.phpactor.setup({
-  autostart = false,
-  on_attach = function(client, bufnr)
-    client.server_capabilities.hoverProvider = false
-    client.server_capabilities.definitionProvider = false
-  end,
-  init_options = {
-    ["language_server_worse_reflection.inlay_hints.enable"] = true,
-    ["language_server_worse_reflection.inlay_hints.params"] = true,
-    ["language_server_worse_reflection.inlay_hints.types"] = true,
-    -- ["language_server_configuration.auto_config"] = false,
-    -- ["code_transform.import_globals"] = true,
-    -- ["language_server_phpstan.enabled"] = true,
-    -- ["language_server_phpstan.level"] = 7,
-    -- ["language_server_phpstan.bin"] = "phpstan",
-  },
-})
+-- lspconfig.phpactor.setup({
+--   autostart = true,
+--   on_attach = function(client, bufnr)
+--     client.server_capabilities.hoverProvider = false
+--     client.server_capabilities.definitionProvider = false
+--   end,
+--   init_options = {
+--     ["language_server_worse_reflection.inlay_hints.enable"] = true,
+--     ["language_server_worse_reflection.inlay_hints.params"] = true,
+--     ["language_server_worse_reflection.inlay_hints.types"] = false,
+--     -- ["language_server_configuration.auto_config"] = false,
+--     -- ["code_transform.import_globals"] = true,
+--     -- ["language_server_phpstan.enabled"] = true,
+--     -- ["language_server_phpstan.level"] = 7,
+--     -- ["language_server_phpstan.bin"] = "phpstan",
+--   },
+-- })
+
+require('lspconfig').yamlls.setup {
+  settings = {
+    yaml = {
+      schemas = {
+        -- kubernetes = "/*.k8s.{yml,yaml}",
+        ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*gitlab-ci*.{yml,yaml}",
+        ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/all.json"] = "/*.k8s.{yaml,yml}",
+      },
+    },
+  }
+}
+vim.lsp.inlay_hint.enable(true)

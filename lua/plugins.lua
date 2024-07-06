@@ -11,125 +11,103 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 return require("lazy").setup({
-  -- { "adalessa/laravel.nvim", config = true, event = "VeryLazy",   dependencies = {
-  --   "nvim-telescope/telescope.nvim",
-  --   "tpope/vim-dotenv",
-  --   "MunifTanjim/nui.nvim",
-  --   "nvimtools/none-ls.nvim",
-  -- }, },
-  -- {"lvimuser/lsp-inlayhints.nvim", lazy = false, config = true },
-  -- { 'simrat39/inlay-hints.nvim', lazy = false, config = true},
+  {
+    "tpope/vim-fugitive",
+    cmd = "Git"
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  { "luckasRanarison/tailwind-tools.nvim", event = "VeryLazy" , config = true },
   {
     "piersolenski/wtf.nvim",
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
     opts = {
-      openai_model_id = "gpt-3.5-turbo",
+      openai_model_id = "gpt-4o",
     },
-    lazy = false
+    cmd = { "Wtf", "WtfSearch" },
   },
-  {
-    "luckasRanarison/nvim-devdocs",
-    config = true,
-    cmd = { "DevdocsOpen", "DevdocsOpenFloat", "DevdocsOpenCurrent", "DevdocsOpenCurrentFloat" },
-  },
-  {
-    'fredeeb/tardis.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = true,
-    cmd = "Tardis",
-  },
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "VeryLazy",
-    config = true,
-    opts = {
-      hint_enable = false
-    }
-  },
-  {
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		cmd = "Oil",
+	},
+	{
+		"kristijanhusak/vim-dadbod-ui",
+		dependencies = {
+			{ "tpope/vim-dadbod", lazy = true },
+			{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+		},
+		cmd = {
+			"DBUI",
+			"DBUIToggle",
+			"DBUIAddConnection",
+			"DBUIFindBuffer",
+		},
+		config = function()
+			vim.g.db_ui_show_help = 0
+			vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+				pattern = { "*.dbout" },
+				callback = function()
+					vim.api.nvim_exec2(
+						[[
+        exe ':resize 40'
+        ]],
+						{}
+					)
+				end,
+			})
+			vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+				pattern = { "*.dbout" },
+				callback = function()
+					vim.api.nvim_exec2(
+						[[
+        exe ':resize 20'
+        ]],
+						{}
+					)
+				end,
+			})
+		end,
+		init = function()
+			vim.g.db_ui_use_nerd_fonts = 1
+		end,
+	},
+	{
+		"ThePrimeagen/harpoon",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		branch = "harpoon2",
+		event = "VeryLazy",
+		config = function()
+			local harpoon = require("harpoon")
+			harpoon:setup()
+		end,
+	},
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "InsertEnter",
+		config = true,
+		opts = {
+			hint_enable = false,
+		},
+	},
+	{
 		"ellisonleao/gruvbox.nvim",
 		config = function()
 			vim.cmd([[colorscheme gruvbox]])
 		end,
-		lazy = false
+		lazy = false,
 	},
 	{
-    'glacambre/firenvim',
-
-    -- Lazy load firenvim
-    -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
-    lazy = not vim.g.started_by_firenvim,
-    build = function()
-        vim.fn["firenvim#install"](0)
-    end
-  },
-  {
-    "rcarriga/nvim-dap-ui",
-    config = true,
-    dependencies = {
-      {
-        "mfussenegger/nvim-dap",
-        config = function()
-          local dap = require("dap")
-          dap.adapters.php = {
-            type = 'executable',
-            command = 'node',
-            args = { '/Users/mireknguyen/.local/share/nvim/mason/packages/php-debug-adapter/extension/out/phpDebug.js' }
-          }
-          dap.configurations.php = {
-            {
-              type = 'php',
-              request = 'launch',
-              name = 'Listen for Xdebug',
-              port = 9000
-            }
-          }
-        end,
-      }
-    }
-  },
-  {
-    "kawre/leetcode.nvim",
-    lazy = "leetcode.nvim" ~= vim.fn.argv()[1],
-    config = true,
-  },
-  {
-    'mikesmithgh/kitty-scrollback.nvim',
-    enabled = true,
-    lazy = true,
-    cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth' },
-    event = { 'User KittyScrollbackLaunch' },
-    config = function()
-      require('kitty-scrollback').setup()
-    end,
-  },
-  { "MirekNguyen/czech-diacritics.nvim", config = true, cmd = "AddDiacritics" },
-  {
-    "uga-rosa/translate.nvim",
-    opts = {
-      default = {
-        command = "google",
-        output = "replace",
-      },
-    },
-    cmd = "Translate"
-  },
-	{
-		"kyazdani42/nvim-tree.lua",
-		config = function()
-			require("plugins.nvim-tree")
-		end,
-		cmd = { "NvimTreeToggle" },
-	},
-	{
-		"romgrk/barbar.nvim",
-		event = { "BufReadPost", "BufNewFile" },
-		config = function()
-			require("plugins.barbar")
-		end,
-		dependencies = { "kyazdani42/nvim-web-devicons" },
+		"mikesmithgh/kitty-scrollback.nvim",
+		config = true,
+		cmd = { "KittyScrollbackGenerateKittens", "KittyScrollbackCheckHealth" },
+		event = { "User KittyScrollbackLaunch" },
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -141,7 +119,6 @@ return require("lazy").setup({
 						override_generic_sorter = true, -- override the generic sorter
 						override_file_sorter = true, -- override the file sorter
 						case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-						-- the default case_mode is "smart_case"
 					},
 					telescope_path = {
 						search_dir = "$HOME",
@@ -156,13 +133,13 @@ return require("lazy").setup({
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"mireknguyen/telescope-path.nvim",
+			"nvim-tree/nvim-web-devicons",
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPost", "BufNewFile" },
-		version = "v0.9.2",
 		config = function()
 			require("plugins.treesitter")
 		end,
@@ -172,9 +149,8 @@ return require("lazy").setup({
 	},
 	{
 		"neovim/nvim-lspconfig",
-		lazy = false,
-		-- event = { "BufReadPost", "BufNewFile" },
-		-- cmd = { "Mason", "LspInstall", "LspUninstall", "LspInfo" },
+		event = { "BufReadPost", "BufNewFile" },
+		cmd = { "Mason", "LspInstall", "LspUninstall", "LspInfo" },
 		config = function()
 			require("plugins.lsp")
 		end,
@@ -213,7 +189,8 @@ return require("lazy").setup({
 	},
 	{
 		"nvimtools/none-ls.nvim",
-		event = { "BufReadPost", "BufNewFile" },
+    -- event = { "BufReadPost", "BufNewFile" },
+    lazy = false,
 		config = function()
 			require("plugins.null-ls")
 		end,
@@ -233,75 +210,33 @@ return require("lazy").setup({
 			})
 		end,
 	},
-	{ "mbbill/undotree", cmd = "UndotreeToggle" },
-	{ "lewis6991/gitsigns.nvim", opts = { signcolumn = false }, cmd = "Gitsigns" },
-  {
-    "jackMort/ChatGPT.nvim",
-    cmd = { "ChatGPT", "ChatGPTRun" },
-    config = function()
-      require("chatgpt").setup({
-        chat = {
-          openai_params = {
-            model = "gpt-3.5-turbo",
-            max_tokens = 4096,
-          },
-          openai_edit_params = {
-            model = "gpt-3.5-turbo",
-          },
-          keymaps = {
-            select_session = "o",
-          }
-        }
-      })
-    end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim"
-    }
-  },
-  {
-    "folke/zen-mode.nvim",
-    opts = {
-      window = {
-        width = .5
-      }
-    },
-    cmd = "ZenMode"
-  },
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    build = ":Copilot auth",
-    event = "InsertEnter",
-    opts = {
-      panel = {
-        enabled = true,
-        auto_refresh = true, -- auto refresh panel
-        layout = {
-          position = "right", -- | top | left | right
-          ratio = 0.4 -- width of the panel, when position is left or right
-        },
-      },
-      suggestion = {
-        enabled = true, -- enable suggestions
-        auto_trigger = true, -- automatically show suggestions
-        accept = false, -- disable built-in keymapping
-        keymap = {
-          accept = "<C-f>",
-          next = "<C-;>",
-          prev = "<C-'>",
-          dismiss = '<C-\\>',
-        }
-      }
-    }
-  },
-  { 'jellydn/CopilotChat.nvim',
-    cmd = {"CopilotChat", "CopilotChatExplain", "CopilotChatTests", "CopilotChatReview", "CopilotChatRefactor"},
-    opts = {
-      mode = "split", -- newbuffer or split  , default: newbuffer
-    },
-  }
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		build = ":Copilot auth",
+		event = "InsertEnter",
+		opts = {
+			panel = {
+				enabled = true,
+				auto_refresh = true, -- auto refresh panel
+				layout = {
+					position = "right", -- | top | left | right
+					ratio = 0.4, -- width of the panel, when position is left or right
+				},
+			},
+			suggestion = {
+				enabled = true, -- enable suggestions
+				auto_trigger = true, -- automatically show suggestions
+				accept = false, -- disable built-in keymapping
+				keymap = {
+					accept = "<C-f>",
+					next = "<C-;>",
+					prev = "<C-'>",
+					dismiss = "<C-\\>",
+				},
+			},
+		},
+	},
 }, {
 	performance = {
 		rtp = {
