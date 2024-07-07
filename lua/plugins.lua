@@ -16,12 +16,10 @@ return require("lazy").setup({
     cmd = "Git"
   },
   {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
+    "luckasRanarison/tailwind-tools.nvim",
+    config = true,
+    filetypes = { "html", "css", "scss", "javascript", "typescript", "javascriptreact", "typescriptreact" },
   },
-  { "luckasRanarison/tailwind-tools.nvim", event = "VeryLazy" , config = true },
   {
     "piersolenski/wtf.nvim",
     dependencies = {
