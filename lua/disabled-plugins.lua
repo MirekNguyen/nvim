@@ -5,7 +5,6 @@ return {
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
   },
-	{ "sindrets/diffview.nvim", cmd = "DiffviewOpen" },
 	{
 		"jackMort/ChatGPT.nvim",
 		cmd = { "ChatGPT", "ChatGPTRun" },

@@ -36,6 +36,7 @@ require("nvim-treesitter.configs").setup({
 		"svelte",
 		"toml",
 		"requirements",
+		"prisma",
 	},
 	highlight = {
 		enable = true,

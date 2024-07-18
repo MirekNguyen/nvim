@@ -61,6 +61,7 @@ return {
     taplo = {},
     sqlls = {},
     gopls = {},
+    prismals = {},
   },
   sources = function(null_ls)
     return {

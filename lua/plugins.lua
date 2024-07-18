@@ -11,6 +11,32 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 return require("lazy").setup({
+	{ "sindrets/diffview.nvim", cmd = "DiffviewOpen" },
+	{
+		"jackMort/ChatGPT.nvim",
+		cmd = { "ChatGPT", "ChatGPTRun" },
+		config = function()
+			require("chatgpt").setup({
+				chat = {
+					openai_params = {
+						model = "gpt-4o",
+						max_tokens = 4096,
+					},
+					openai_edit_params = {
+						model = "gpt-4o",
+					},
+					keymaps = {
+						select_session = "o",
+					},
+				},
+			})
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	},
   {
     "tpope/vim-fugitive",
     cmd = "Git"
