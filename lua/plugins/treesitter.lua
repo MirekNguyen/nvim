@@ -37,6 +37,8 @@ require("nvim-treesitter.configs").setup({
 		"toml",
 		"requirements",
 		"prisma",
+		"http",
+		"graphql",
 	},
 	highlight = {
 		enable = true,
