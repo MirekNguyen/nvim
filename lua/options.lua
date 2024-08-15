@@ -29,6 +29,7 @@ local options = {
   titlestring='%t',
   splitright = true, -- vertical split to the right
   foldenable = false, -- disable folding
+  shell = '/opt/homebrew/bin/fish',
   -- cmdheight = 0, -- cmdline height
   background = "dark",
 }
