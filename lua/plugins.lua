@@ -22,7 +22,7 @@ return require("lazy").setup({
   require("plugins.kitty-scrollback"),
   require("plugins.telescope"),
   require("plugins.treesitter"),
-  require("plugins.lsp"),
+  require("plugins.lsp-config"),
   require("plugins.lsp-cmp"),
   require("plugins.none-ls"),
   require("plugins.lsp-saga"),
