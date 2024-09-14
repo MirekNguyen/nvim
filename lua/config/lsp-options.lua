@@ -91,6 +91,10 @@ return {
     yamlls = {
       settings = {
         yaml = {
+          schemas = {
+            ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*gitlab-ci*.{yml,yaml}",
+            ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/all.json"] = "/*.k8s.{yaml,yml}",
+          },
           format = {
             enable = true,
             singleQuote = true,

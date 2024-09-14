@@ -1,6 +1,6 @@
 return {
   "mikesmithgh/kitty-scrollback.nvim",
-  config = true,
+  opts = {},
   cmd = { "KittyScrollbackGenerateKittens", "KittyScrollbackCheckHealth" },
   event = { "User KittyScrollbackLaunch" },
 }

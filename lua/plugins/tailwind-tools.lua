@@ -1,5 +1,5 @@
 return {
   "luckasRanarison/tailwind-tools.nvim",
-  config = true,
+  opts = {},
   filetypes = { "html", "css", "scss", "javascript", "typescript", "javascriptreact", "typescriptreact" },
 }
