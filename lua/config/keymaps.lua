@@ -1,74 +1,75 @@
-local function map(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
+---Sets a keymap in Neovim for normal or visual mode
+---@param mode "'n'" | "'v'" The mode for which the keymap is active ('n' for normal mode, 'v' for visual mode)
+---@param shortcut string The key combination for the shortcut
+---@param command string The command or action to be executed
+function Keymap(mode, shortcut, command)
+	vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
 
 -- normal
-map("n", "<leader>yy", '"+yy')
-map("n", "<leader>Y", '"+Y')
-map("n", "<leader>dd", '"+dd')
-map("n", "<leader>p", '"+p')
-map("n", "<leader>P", '"+P')
+Keymap("n", "<leader>yy", '"+yy')
+Keymap("n", "<leader>Y", '"+Y')
+Keymap("n", "<leader>dd", '"+dd')
+Keymap("n", "<leader>p", '"+p')
+Keymap("n", "<leader>P", '"+P')
 
 -- visual
-map("v", "<leader>y", '"+y')
-map("v", "<leader>d", '"+d')
-map("v", "<leader>p", '"+p')
-map("v", "<leader>P", '"+P')
+Keymap("v", "<leader>y", '"+y')
+Keymap("v", "<leader>d", '"+d')
+Keymap("v", "<leader>p", '"+p')
+Keymap("v", "<leader>P", '"+P')
 
 -- format
-map("n", "<leader>w", ":lua vim.lsp.buf.format()<CR>")
-
--- Oil
-map("n", "<leader>k", ":Oil<CR>")
+Keymap("n", "<leader>w", ":lua vim.lsp.buf.format()<CR>")
 
 -- Telescope
-map("n", "<leader>g", ":Telescope live_grep<CR>")
-map("n", "<C-b>", ":Telescope buffers<CR>")
-map("n", "<D-j>", ":Telescope telescope_path<CR>")
-map("n", "<D-J>", ":Telescope telescope_path_forward<CR>")
-map("n", "<D-l>", ":lua require'telescope.builtin'.git_files{show_untracked=true}<CR>")
+Keymap("n", "<leader>g", ":Telescope live_grep<CR>")
+Keymap("n", "<C-b>", ":Telescope buffers<CR>")
+Keymap("n", "<D-j>", ":Telescope telescope_path<CR>")
+Keymap("n", "<D-J>", ":Telescope telescope_path_forward<CR>")
+Keymap("n", "<D-l>", ":lua require'telescope.builtin'.git_files{show_untracked=true}<CR>")
 
 -- Lspsaga
-map("n", "ga", ":Lspsaga code_action<CR>")
-map("n", "gf", ":Lspsaga finder<CR>")
-map("n", "K", ":Lspsaga hover_doc ++keep<CR>")
-map("n", "L", ":Lspsaga peek_definition<CR>")
-map("n", "gr", ":Lspsaga rename<CR>")
-map("n", "go", ":Lspsaga outline<CR>")
-map("n", "gd", ":Lspsaga goto_definition<CR>")
-map("n", "M", ":Lspsaga show_line_diagnostics<CR>")
+Keymap("n", "ga", ":Lspsaga code_action<CR>")
+Keymap("n", "gf", ":Lspsaga finder<CR>")
+Keymap("n", "K", ":Lspsaga hover_doc ++keep<CR>")
+Keymap("n", "L", ":Lspsaga peek_definition<CR>")
+Keymap("n", "gr", ":Lspsaga rename<CR>")
+Keymap("n", "go", ":Lspsaga outline<CR>")
+Keymap("n", "gd", ":Lspsaga goto_definition<CR>")
+Keymap("n", "M", ":Lspsaga show_line_diagnostics<CR>")
 
 -- Harpoon
-map("n", "<leader>1", ":lua require('harpoon'):list():select(1)<CR>")
-map("n", "<leader>2", ":lua require('harpoon'):list():select(2)<CR>")
-map("n", "<leader>3", ":lua require('harpoon'):list():select(3)<CR>")
-map("n", "<leader>4", ":lua require('harpoon'):list():select(4)<CR>")
-map("n", "<leader>5", ":lua require('harpoon'):list():select(5)<CR>")
-map("n", "<leader>a", ":lua require('harpoon'):list():add()<CR>")
-map("n", "<leader>s", ":lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<CR>")
+Keymap("n", "<leader>1", ":lua require('harpoon'):list():select(1)<CR>")
+Keymap("n", "<leader>2", ":lua require('harpoon'):list():select(2)<CR>")
+Keymap("n", "<leader>3", ":lua require('harpoon'):list():select(3)<CR>")
+Keymap("n", "<leader>4", ":lua require('harpoon'):list():select(4)<CR>")
+Keymap("n", "<leader>5", ":lua require('harpoon'):list():select(5)<CR>")
+Keymap("n", "<leader>a", ":lua require('harpoon'):list():add()<CR>")
+Keymap("n", "<leader>s", ":lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<CR>")
 
 vim.api.nvim_create_user_command("HarpoonAdd", function()
-  require("harpoon"):list():add()
+	require("harpoon"):list():add()
 end, {})
 vim.api.nvim_create_user_command("HarpoonList", function()
-  require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
+	require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
 end, {})
 
 -- dadbod
-map("n", "<leader>d", ":DBUIToggle<CR>")
+Keymap("n", "<leader>d", ":DBUIToggle<CR>")
 
 -- window navigation
-map("n", "<D-H>", "<C-w>h")
-map("n", "<D-M-J>", "<C-w>j")
-map("n", "<D-K>", "<C-w>k")
-map("n", "<D-L>", "<C-w>l")
-map("n", "<C-q>", "<C-w>q")
-map("n", "<C-->", "<C-w>-")
-map("n", "<C-+>", "<C-w>=")
+Keymap("n", "<D-H>", "<C-w>h")
+Keymap("n", "<D-M-J>", "<C-w>j")
+Keymap("n", "<D-K>", "<C-w>k")
+Keymap("n", "<D-L>", "<C-w>l")
+Keymap("n", "<C-q>", "<C-w>q")
+Keymap("n", "<C-->", "<C-w>-")
+Keymap("n", "<C-+>", "<C-w>=")
 
 vim.api.nvim_create_user_command("ToggleInlayHint", function()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, {})
 
--- map("n", "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
--- map("t", "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
+-- Keymap("n", "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
+-- Keymap("t", "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
