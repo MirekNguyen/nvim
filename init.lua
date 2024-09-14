@@ -1,4 +1,3 @@
-vim.cmd('colorscheme vim')
 require('options')
-require('plugins')
+require('lazy-config')
 require('map')

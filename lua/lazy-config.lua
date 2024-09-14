@@ -10,24 +10,8 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-return require("lazy").setup({
-  require("plugins.colorscheme"),
-  require("plugins.chatgpt-nvim"),
-  require("plugins.tailwind-tools"),
-  require("plugins.oil"),
-  require("plugins.dadbod"),
-  require("plugins.wtf"),
-  require("plugins.harpoon"),
-  require("plugins.lsp-signature"),
-  require("plugins.kitty-scrollback"),
-  require("plugins.telescope"),
-  require("plugins.treesitter"),
-  require("plugins.lsp-config"),
-  require("plugins.lsp-cmp"),
-  require("plugins.none-ls"),
-  require("plugins.lsp-saga"),
-  require("plugins.copilot"),
-}, {
+
+require("lazy").setup("plugins", {
   performance = {
     rtp = {
       disabled_plugins = {
