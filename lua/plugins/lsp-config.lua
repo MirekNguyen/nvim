@@ -10,15 +10,15 @@ local function configuration()
   end
 
   -- Check if lsp-options-custom.lua exists
-  local user_lsp_config_path = vim.fn.stdpath('config') .. '/lua/lsp-options-custom.lua'
-  local lsp_options
-
-  if vim.fn.filereadable(user_lsp_config_path) == 1 then
-    lsp_options = require 'lsp-options-custom'
-  else
-    lsp_options = require 'lsp-options'
-  end
-  local servers = lsp_options.servers
+  -- local user_lsp_config_path = vim.fn.stdpath('config') .. '/lua/config/lsp-options-custom.lua'
+  -- local lsp_options
+  --
+  -- if vim.fn.filereadable(user_lsp_config_path) == 1 then
+  --   lsp_options = require 'config.lsp-options-custom'
+  -- else
+  --   lsp_options = require 'config.lsp-options'
+  -- end
+  local servers = require('config.lsp-options').servers
 
   for server, args in pairs(servers) do
     local config = args or {}

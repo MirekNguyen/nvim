@@ -33,7 +33,7 @@ return {
       -- },
     },
     html = {
-      filetypes = { "html", "twig", "blade" }
+      filetypes = { "html", "twig", "blade", "latte" }
     },
     jsonls = {
       settings = {

@@ -1,3 +1,3 @@
-require('options')
-require('lazy-config')
-require('map')
+require('config.options')
+require('config.lazy')
+require('config.map')
