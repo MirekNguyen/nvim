@@ -147,7 +147,6 @@ return {
       null_ls.builtins.diagnostics.phpcs.with({
         extra_args = { "--standard=PSR12", "--exclude=Generic.WhiteSpace.DisallowTabIndent" },
       }),
-      -- null_ls.builtins.formatting.phpcsfixer.with({ extra_args = { "--using-cache=no" } }),
       null_ls.builtins.formatting.phpcbf.with({
         command = "/Users/mireknguyen/.local/projects/work/omnichannel/vendor/bin/phpcbf",
         args = {
@@ -167,20 +166,18 @@ return {
       }),
       -- bash
       null_ls.builtins.formatting.shellharden,
-      -- null_ls.builtins.code_actions.shellcheck,
-      -- null_ls.builtins.diagnostics.shellcheck,
+      null_ls.builtins.code_actions.shellcheck,
+      null_ls.builtins.diagnostics.shellcheck,
       -- python
       null_ls.builtins.formatting.isort,
       null_ls.builtins.formatting.black,
-      -- rust
-      -- null_ls.builtins.formatting.rustfmt,
       -- lua
       null_ls.builtins.formatting.stylua,
+      -- other
       null_ls.builtins.formatting.nginx_beautifier,
       null_ls.builtins.diagnostics.dotenv_linter,
       null_ls.builtins.diagnostics.hadolint,
       null_ls.builtins.diagnostics.markdownlint,
-      -- null_ls.builtins.diagnostics.sqlfluff,
     }
   end,
 }
