@@ -166,8 +166,6 @@ return {
       }),
       -- bash
       null_ls.builtins.formatting.shellharden,
-      null_ls.builtins.code_actions.shellcheck,
-      null_ls.builtins.diagnostics.shellcheck,
       -- python
       null_ls.builtins.formatting.isort,
       null_ls.builtins.formatting.black,
