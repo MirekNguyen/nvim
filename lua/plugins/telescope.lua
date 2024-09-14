@@ -2,7 +2,7 @@ return {
   "nvim-telescope/telescope.nvim",
   keys = {
     { "<leader>g", "<cmd>Telescope live_grep<CR>",      desc = "Live grep" },
-    { "<C-b>",     "<cmd>Telescope buffers<CR>",        desc = "Buffers" },
+    { "<leader>b",     "<cmd>Telescope buffers<CR>",        desc = "Buffers" },
     { "<D-j>",     "<cmd>Telescope telescope_path<CR>", desc = "Files in ~" },
     {
       "<D-J>",

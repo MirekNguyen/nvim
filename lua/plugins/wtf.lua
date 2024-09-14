@@ -4,7 +4,7 @@ return {
     "MunifTanjim/nui.nvim",
   },
   opts = {
-    openai_model_id = "gpt-4o-2024-08-06",
+    openai_model_id = vim.env.OPENAI_MODEL or "gpt-4o",
   },
   cmd = { "Wtf", "WtfSearch" },
 }
