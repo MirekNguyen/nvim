@@ -29,8 +29,8 @@ local options = {
   splitright = true, -- vertical split to the right
   foldenable = false, -- disable folding
   shell = vim.env.SHELL,
+  background = vim.env.DARK_MODE == 'true' and 'dark' or 'light',
   -- cmdheight = 0, -- cmdline height
-  background = vim.env.DARK_MODE and 'dark' or 'light',
 }
 local global_options = {
   -- loaded_python3_provider = 0,
