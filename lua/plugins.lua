@@ -22,29 +22,9 @@ return require("lazy").setup({
   require("plugins.kitty-scrollback"),
   require("plugins.telescope"),
   require("plugins.treesitter"),
-  require('plugins.lsp'),
-  {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    config = function()
-      require("plugins.lsp-cmp")
-    end,
-    dependencies = {
-      {
-        "L3MON4D3/LuaSnip",
-        config = function()
-          require("plugins.luasnip")
-        end,
-      },
-      "onsails/lspkind.nvim",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lsp",
-      "saadparwaiz1/cmp_luasnip",
-    },
-  },
-  require('plugins.none-ls'),
+  require("plugins.lsp"),
+  require("plugins.lsp-cmp"),
+  require("plugins.none-ls"),
   require("plugins.lsp-saga"),
   require("plugins.copilot"),
 }, {
