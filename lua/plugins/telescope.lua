@@ -1,15 +1,11 @@
 return {
   "nvim-telescope/telescope.nvim",
   keys = {
-    { "<leader>g", "<cmd>Telescope live_grep<CR>",      desc = "Live grep" },
-    { "<leader>b",     "<cmd>Telescope buffers<CR>",        desc = "Buffers" },
-    { "<D-j>",     "<cmd>Telescope telescope_path<CR>", desc = "Files in ~" },
-    {
-      "<D-J>",
-      "<cmd>Telescope telescope_path_forward<CR>",
-      desc = "Forward files",
-    },
-    { "<D-l>", "<cmd>lua require'telescope.builtin'.git_files{show_untracked=true}<CR>" },
+    { "<leader>g", "<cmd>Telescope live_grep<CR>",                                          desc = "Live grep" },
+    { "<leader>b", "<cmd>Telescope buffers<CR>",                                            desc = "Buffers" },
+    { "<D-j>",     "<cmd>Telescope telescope_path<CR>",                                     desc = "Files in ~" },
+    { "<D-J>",     "<cmd>Telescope telescope_path_forward<CR>",                             desc = "Forward files" },
+    { "<D-l>",     "<cmd>lua require'telescope.builtin'.git_files{show_untracked=true}<CR>" },
   },
   config = function()
     require("telescope").setup({
