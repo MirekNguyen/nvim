@@ -7,12 +7,16 @@ return {
     },
     { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
   },
-  cmd = {
-    "DBUI",
-    "DBUIToggle",
-    "DBUIAddConnection",
-    "DBUIFindBuffer",
+  keys = {
+    { "<leader>d", ":DBUIToggle<CR>" },
   },
+  ft = { "db" },
+  -- cmd = {
+  --   "DBUI",
+  --   "DBUIToggle",
+  --   "DBUIAddConnection",
+  --   "DBUIFindBuffer",
+  -- },
   config = function()
     vim.g.db_ui_show_help = 0
     vim.api.nvim_create_autocmd({ "BufReadPost" }, {

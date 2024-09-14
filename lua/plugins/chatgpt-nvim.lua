@@ -1,6 +1,6 @@
 return {
   "jackMort/ChatGPT.nvim",
-  cmd = { "ChatGPT", "ChatGPTRun" },
+  ft = { "chatgpt" },
   config = function()
     require("chatgpt").setup({
       chat = {
