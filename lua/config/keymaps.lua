@@ -18,3 +18,11 @@ keymap.set("n", "<leader>w", ":lua vim.lsp.buf.format()<CR>", opts)
 vim.api.nvim_create_user_command("ToggleInlayHint", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, {})
+
+vim.api.nvim_create_user_command("TSImport", function()
+  vim.lsp.buf.code_action({ apply = true, context = { only = { "source.addMissingImports.ts" } } })
+end, {})
+
+vim.api.nvim_create_user_command("TSRemove", function()
+  vim.lsp.buf.code_action({ apply = true, context = { only = { "source.removeUnusedImports.ts", "source.removeUnused.ts" } } })
+end, {})
