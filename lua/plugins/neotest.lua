@@ -13,6 +13,7 @@ return {
     { "<leader>tr", function() require("neotest").run.run() end, desc = "Run Nearest" },
     { "<leader>to", function() require("neotest").output.open({ enter = true, auto_close = true }) end, desc = "Show Output" },
     { "<leader>tO", function() require("neotest").output_panel.toggle() end, desc = "Toggle Output Panel" },
+    { "<leader>ts", function() require("neotest").summary.toggle() end, desc = "Toggle Summary" },
   },
   config = function()
     require("neotest").setup({
