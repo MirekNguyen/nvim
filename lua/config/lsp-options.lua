@@ -109,7 +109,6 @@ return {
 		},
 		taplo = {},
 		sqlls = {},
-		gopls = {},
 		prismals = {},
 		nginx_language_server = {},
 	},
@@ -118,13 +117,11 @@ return {
 			-- js
 			null_ls.builtins.formatting.prettierd.with({ disabled_filetypes = { "markdown" } }),
 			-- php
-			null_ls.builtins.diagnostics.phpcs.with({ extra_args = { "--standard=PSR12" } }),
+			null_ls.builtins.diagnostics.phpcs.with({ extra_args = { "--standard=PSR12", "--exclude=Generic.WhiteSpace.DisallowTabIndent" } }),
 			null_ls.builtins.formatting.phpcbf.with({
 				extra_arg = { "--standard=/Users/mireknguyen/.local/projects/work/omnichannel/phpcs.xml" },
 			}),
 			null_ls.builtins.diagnostics.phpstan,
-			null_ls.builtins.diagnostics.twigcs,
-			null_ls.builtins.formatting.blade_formatter,
 			-- sql
 			null_ls.builtins.formatting.sql_formatter.with({
 				extra_filetypes = { "mysql", "pgsql", "sqlite" },
@@ -139,7 +136,6 @@ return {
 			null_ls.builtins.formatting.stylua,
 			-- other
 			null_ls.builtins.formatting.nginx_beautifier,
-			null_ls.builtins.diagnostics.dotenv_linter,
 			null_ls.builtins.diagnostics.hadolint,
 			null_ls.builtins.diagnostics.markdownlint,
 			null_ls.builtins.formatting.mdformat,
