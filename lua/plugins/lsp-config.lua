@@ -1,5 +1,5 @@
 local function configuration()
-  local lspconfig = require('lspconfig')
+  local lspconfig = require("lspconfig")
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -9,7 +9,7 @@ local function configuration()
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
   end
 
-  local servers = require('config.lsp-options').servers
+  local servers = require("config.lsp-options").servers
 
   for server, args in pairs(servers) do
     local config = args or {}
@@ -24,17 +24,14 @@ end
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPost", "BufNewFile" },
+  version = "1.0.0",
   cmd = { "Mason", "LspInstall", "LspUninstall", "LspInfo" },
   config = configuration,
   dependencies = {
+    { "williamboman/mason.nvim", config = true },
     {
       "williamboman/mason-lspconfig.nvim",
-      config = true,
       opts = { automatic_installation = true },
-      dependencies = {
-        "williamboman/mason.nvim",
-        config = true,
-      },
     },
   },
 }
