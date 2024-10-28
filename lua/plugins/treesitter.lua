@@ -34,6 +34,8 @@ local tsconfig = {
     "prisma",
     "http",
     "graphql",
+    "go",
+    "nix",
   },
   highlight = {
     enable = true,
