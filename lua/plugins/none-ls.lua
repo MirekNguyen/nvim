@@ -5,8 +5,7 @@ return {
     local null_ls = require("null-ls")
 
     null_ls.setup({
-      sources = require('config.lsp-options').sources(null_ls),
+      sources = require("config.lsp-options").sources(null_ls),
     })
   end,
-  dependencies = { "nvim-lua/plenary.nvim" },
 }
