@@ -1,5 +1,5 @@
 return {
-  "jackMort/ChatGPT.nvim",
+  "MirekNguyen/ChatGPT.nvim",
   ft = { "chatgpt" },
   config = function()
     require("chatgpt").setup({
