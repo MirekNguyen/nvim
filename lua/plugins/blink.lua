@@ -1,7 +1,7 @@
 return {
 	"saghen/blink.cmp",
 	enabled = true,
-	event = { "LspAttach", "InsertCharPre" },
+	event = { "InsertCharPre" },
 	version = "v0.*",
   dependencies = 'rafamadriz/friendly-snippets',
 	opts = {
@@ -48,7 +48,7 @@ return {
 			},
 			documentation = {
 				auto_show = true,
-        -- auto_show_delay_ms = 0,
+        auto_show_delay_ms = 250,
         -- update_delay_ms = 0,
 				border = "single",
 			},
