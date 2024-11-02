@@ -30,7 +30,7 @@ local options = {
   foldenable = false, -- disable folding
   shell = vim.env.SHELL,
   background = vim.env.DARK_MODE == 'false' and 'light' or 'dark',
-  -- cmdheight = 0, -- cmdline height
+  cmdheight = 0, -- cmdline height
 }
 local global_options = {
   -- loaded_python3_provider = 0,
