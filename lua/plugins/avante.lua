@@ -1,6 +1,5 @@
 return {
 	"yetone/avante.nvim",
-	event = "VeryLazy",
 	keys = {
     { "<leader>q", "<cmd>AvanteToggle<cr>", desc = "Avante toggle" },
   },
@@ -22,7 +21,6 @@ return {
 		{
 			-- support for image pasting
 			"HakonHarnes/img-clip.nvim",
-			event = "VeryLazy",
 			opts = {
 				-- recommended settings
 				default = {
@@ -42,7 +40,7 @@ return {
 			opts = {
 				file_types = { "markdown", "Avante" },
 			},
-			ft = { "markdown", "Avante" },
+			ft = { "AvanteInput", "Avante" },
 		},
 	},
 }
