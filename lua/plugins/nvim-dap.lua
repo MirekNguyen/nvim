@@ -69,7 +69,6 @@ return {
 			automatic_installation = true,
 			handlers = {},
 		},
-		lazy = false,
 		keys = {
 		  { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
 		  { "<leader>dc", function() require("dap").continue() end, desc = "Run/Continue" },
@@ -82,7 +81,6 @@ return {
 	},
 	{
 		"rcarriga/nvim-dap-ui",
-		lazy = false,
 		opts = {},
 		keys = {
 			{ "<leader>du", "<cmd>lua require('dapui').toggle()<CR>" },
