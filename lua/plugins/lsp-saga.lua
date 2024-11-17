@@ -10,7 +10,6 @@ return {
     { "go", "<cmd>Lspsaga outline<CR>" },
     { "gd", "<cmd>Lspsaga goto_definition<CR>" },
     { "M",  "<cmd>Lspsaga show_line_diagnostics<CR>" },
-    { "gi", "<cmd>lua vim.lsp.buf.implementation({buffer=bufnr})<CR>" },
   },
   config = {
     symbol_in_winbar = {
