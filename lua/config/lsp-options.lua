@@ -55,6 +55,8 @@ return {
     prismals = {},
     nginx_language_server = {},
     jdtls = {},
+    ansiblels = {},
+    terraformls = {},
   },
   sources = function(null_ls)
     return {
