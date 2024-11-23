@@ -9,7 +9,7 @@ local function configuration()
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
   end
 
-  local servers = require("config.lsp-options").servers
+  local servers = vim.env.ENABLE_LSP_SERVERS == "false" and {} or require("config.lsp-options").servers
 
   for server, args in pairs(servers) do
     local config = args or {}
