@@ -24,12 +24,9 @@ return {
 			["<C-f>"] = { "scroll_documentation_down", "fallback" },
 		},
 		sources = {
-			-- add vim-dadbod-completion to your completion providers
-			completion = {
-				enabled_providers = { "lsp", "path", "snippets", "buffer", "dadbod" },
-			},
+      default = { "lsp", "path", "snippets", "buffer", "dadbod" },
 			providers = {
-				dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+				dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink", score_offset = 2000 },
 			},
 		},
 		completion = {
@@ -45,7 +42,6 @@ return {
 			documentation = {
 				auto_show = true,
 				auto_show_delay_ms = 250,
-				-- update_delay_ms = 0,
 				window = {
 					border = "single",
 				},
