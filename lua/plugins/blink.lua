@@ -30,6 +30,9 @@ return {
 			},
 		},
 		completion = {
+		  list = {
+		    selection = "auto_insert"
+      },
 			trigger = {
 				show_on_insert_on_trigger_character = false,
 			},
@@ -40,8 +43,7 @@ return {
 				},
 			},
 			documentation = {
-				auto_show = true,
-				auto_show_delay_ms = 250,
+				auto_show_delay_ms = 0,
 				window = {
 					border = "single",
 				},
