@@ -31,7 +31,9 @@ return {
 		},
 		completion = {
 		  list = {
-		    selection = "auto_insert"
+		    selection = {
+		      preselect = false
+        }
       },
 			trigger = {
 				show_on_insert_on_trigger_character = false,
@@ -39,7 +41,7 @@ return {
 			menu = {
 				border = "single",
 				draw = {
-					columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "kind" } },
+					columns = { { "label", "label_description", gap = 1 }, { "kind_icon" }, { "kind" } },
 				},
 			},
 			documentation = {
