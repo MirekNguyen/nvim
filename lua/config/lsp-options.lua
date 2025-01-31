@@ -58,6 +58,7 @@ return {
 		ansiblels = {},
 		terraformls = {},
 		lemminx = {},
+		kotlin_language_server = {},
 	},
 	sources = function(null_ls)
 		return {
@@ -89,6 +90,8 @@ return {
 			null_ls.builtins.diagnostics.markdownlint,
 			null_ls.builtins.formatting.mdformat,
 			null_ls.builtins.diagnostics.spectral,
+			null_ls.builtins.diagnostics.ktlint,
+			null_ls.builtins.formatting.ktlint,
 		}
 	end,
 }
