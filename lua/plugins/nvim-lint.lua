@@ -8,7 +8,7 @@ return {
 	config = function()
 	  local lint = require("lint")
 		lint.linters_by_ft = {
-			sh = { "shellcheck" },
+			sh = { "shellcheck", "bash" },
       php = { 'phpcs', 'phpstan' },
 			sql = { "sqlfluff" },
 			nginx = { "nginx-lint" },
