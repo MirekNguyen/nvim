@@ -59,39 +59,5 @@ return {
 		terraformls = {},
 		lemminx = {},
 		kotlin_language_server = {},
-	},
-	sources = function(null_ls)
-		return {
-			-- js
-			null_ls.builtins.formatting.prettierd.with({ disabled_filetypes = { "markdown" } }),
-			-- php
-			null_ls.builtins.diagnostics.phpcs.with({
-				extra_args = { "--standard=PSR12", "--exclude=Generic.WhiteSpace.DisallowTabIndent" },
-			}),
-			null_ls.builtins.formatting.phpcbf.with({
-				extra_arg = { "--standard=/Users/mireknguyen/.local/projects/work/omnichannel/phpcs.xml" },
-			}),
-			null_ls.builtins.diagnostics.phpstan,
-			-- sql
-			null_ls.builtins.formatting.sql_formatter.with({
-				extra_filetypes = { "mysql", "pgsql", "sqlite" },
-				extra_args = { "--config", '{"keywordCase": "upper"}' },
-			}),
-			-- bash
-			null_ls.builtins.formatting.shellharden,
-			-- python
-			null_ls.builtins.formatting.isort,
-			null_ls.builtins.formatting.black,
-			-- lua
-			null_ls.builtins.formatting.stylua,
-			-- other
-			null_ls.builtins.formatting.nginx_beautifier,
-			null_ls.builtins.diagnostics.hadolint,
-			null_ls.builtins.diagnostics.markdownlint,
-			null_ls.builtins.formatting.mdformat,
-			null_ls.builtins.diagnostics.spectral,
-			null_ls.builtins.diagnostics.ktlint,
-			null_ls.builtins.formatting.ktlint,
-		}
-	end,
+	}
 }
