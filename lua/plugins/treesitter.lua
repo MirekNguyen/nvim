@@ -9,7 +9,7 @@ local tsconfig = {
     disable = {},
   },
   autotag = {
-    enable = true,
+    enable = false,
   },
 }
 
