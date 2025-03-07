@@ -1,7 +1,7 @@
 return {
   "yetone/avante.nvim",
   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-  lazy = false,
+  event = "VeryLazy",
   opts = {
     -- add any opts here
     -- for example
