@@ -1,3 +1,7 @@
+vim.diagnostic.config({
+  severity_sort = true,
+})
+
 return {
   "glepnir/lspsaga.nvim",
   event = "LspAttach",
