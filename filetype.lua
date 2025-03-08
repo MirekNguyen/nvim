@@ -31,3 +31,9 @@ vim.filetype.add({
 		["docker%-compose.*%.ya?ml"] = "yaml.docker-compose",
 	},
 })
+
+vim.filetype.add({
+  pattern = {
+    ["%.env.*"] = "dotenv",
+  },
+})
