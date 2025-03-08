@@ -24,7 +24,7 @@ end
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPost", "BufNewFile" },
-  version = "1.0.0",
+  version = "*",
   cmd = { "Mason", "LspInstall", "LspUninstall", "LspInfo" },
   config = configuration,
   dependencies = {

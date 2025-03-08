@@ -1,8 +1,10 @@
 return {
   "saghen/blink.cmp",
   event = { "InsertCharPre" },
-  version = "v0.*",
+  version = '*',
   dependencies = "rafamadriz/friendly-snippets",
+  ---@module 'blink.cmp'
+  ---@type blink.cmp.Config
   opts = {
     keymap = {
       ["<C-a>"] = { "show", "show_documentation", "hide_documentation" },

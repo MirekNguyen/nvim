@@ -23,7 +23,6 @@ return {
 			sh = { "shellharden", "shfmt" },
 			php = { "phpcbf" },
 			sql = { "sql_formatter" },
-			nginx = { "nginx_beautifier" },
 			markdown = { "mdformat" },
 			kotlin = { "ktlint" },
 		},

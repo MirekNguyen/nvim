@@ -11,9 +11,9 @@ return {
 			sh = { "shellcheck", "bash" },
       php = { 'phpcs', 'phpstan' },
 			sql = { "sqlfluff" },
-			nginx = { "nginx-lint" },
 			markdown = { "markdownlint" },
 			kotlin = { "ktlint" },
+			dotenv = { "dotenv_linter" },
 		}
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
