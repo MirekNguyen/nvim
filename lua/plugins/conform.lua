@@ -4,9 +4,7 @@ return {
 	keys = {
 		{
 			"<leader>w",
-			function()
-				require("conform").format({ async = true })
-			end,
+			"<cmd>lua require('conform').format({ async = true })<CR>",
 			desc = "Format buffer",
 		},
 	},

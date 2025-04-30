@@ -25,10 +25,7 @@ return {
       ["<C-f>"] = { "scroll_documentation_down", "fallback" },
     },
     sources = {
-      default = { "lsp", "path", "snippets", "buffer", "dadbod" },
-      providers = {
-        dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink", score_offset = 2000 },
-      },
+      default = { "lsp", "path", "snippets", "buffer"},
     },
     completion = {
       list = {
