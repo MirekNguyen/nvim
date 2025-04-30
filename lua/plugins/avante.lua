@@ -1,15 +1,22 @@
 return {
 	"yetone/avante.nvim",
-	version = '*',
-	event = "VeryLazy",
+	version = "*",
+	cmd = { "AvanteAsk", "AvanteEdit", "AvanteFocus" },
+	keys = {
+		{
+			"<leader>d",
+			"<cmd>AvanteToggle<CR>",
+			desc = "Ask Avante",
+		},
+	},
 	opts = {
 		provider = "claude",
 		openai = {
-		  endpoint = "https://api.openai.com/v1",
-		  model = "o3-mini",
-		  timeout = 30000,
-		  temperature = 0,
-		  max_tokens = 4096,
+			endpoint = "https://api.openai.com/v1",
+			model = "o3-mini",
+			timeout = 30000,
+			temperature = 0,
+			max_tokens = 4096,
 		},
 		claude = {
 			endpoint = "https://api.anthropic.com",
@@ -35,7 +42,6 @@ return {
 		{
 			-- support for image pasting
 			"HakonHarnes/img-clip.nvim",
-			event = "VeryLazy",
 			opts = {
 				-- recommended settings
 				default = {
