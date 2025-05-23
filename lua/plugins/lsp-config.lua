@@ -1,5 +1,4 @@
 local function configuration()
-	local lspconfig = require("lspconfig")
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -7,15 +6,6 @@ local function configuration()
 	for type, icon in pairs(signs) do
 		local hl = "DiagnosticSign" .. type
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-	end
-
-	local servers = vim.env.ENABLE_LSP_SERVERS == "false" and {} or require("config.lsp-options").servers
-
-	for server, args in pairs(servers) do
-		local config = args or {}
-		config.capabilities = (args.capabilities or capabilities)
-		config.single_file_support = (args.single_file_support or true)
-		lspconfig[server].setup(config)
 	end
 
 	vim.lsp.inlay_hint.enable(true)
@@ -29,15 +19,45 @@ return {
 	config = configuration,
 	dependencies = {
 		{
-		  "williamboman/mason.nvim",
-		  version = "1.*",
-		  config = true
+			"williamboman/mason.nvim",
+			config = true,
 		},
 		{
 			"williamboman/mason-lspconfig.nvim",
-		  version = "1.*",
 			opts = {
-				automatic_installation = true,
+				ensure_installed = {
+					"bashls",
+					"helm_ls",
+					"omnisharp",
+					"texlab",
+					"bashls",
+					"pyright",
+					"clangd",
+					"cssls",
+					"eslint",
+					"svelte",
+					"ts_ls",
+					"dockerls",
+					"docker_compose_language_service",
+					"lua_ls",
+					"rust_analyzer",
+					"taplo",
+					"sqlls",
+					"prismals",
+					"nginx_language_server",
+					"jdtls",
+					"ansiblels",
+					"terraformls",
+					"lemminx",
+					"kotlin_language_server",
+
+					"html",
+					"intelephense",
+					"emmet_language_server",
+					"tailwindcss",
+					"jsonls",
+					"yamlls",
+				},
 			},
 		},
 	},
