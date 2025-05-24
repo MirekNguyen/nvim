@@ -2,10 +2,10 @@ return {
 	"mfussenegger/nvim-lint",
 	lazy = false,
 	config = function()
-	  local lint = require("lint")
+		local lint = require("lint")
 		lint.linters_by_ft = {
 			sh = { "shellcheck", "bash" },
-      php = { 'phpcs', 'phpstan' },
+			php = { "phpstan", "phpcs" },
 			sql = { "sqlfluff" },
 			markdown = { "markdownlint" },
 			kotlin = { "ktlint" },
@@ -19,5 +19,5 @@ return {
 				lint.try_lint()
 			end,
 		})
-  end
+	end,
 }
