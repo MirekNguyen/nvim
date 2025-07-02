@@ -1,4 +1,6 @@
 vim.diagnostic.config({
+  virtual_text = true,
+  -- virtual_lines = true,
 	signs = {
 		text = {
 			[vim.diagnostic.severity.ERROR] = "",
@@ -8,6 +10,7 @@ vim.diagnostic.config({
 		},
 	},
 })
+
 vim.lsp.inlay_hint.enable(true)
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -56,6 +59,8 @@ return {
 					"tailwindcss",
 					"jsonls",
 					"yamlls",
+
+					"sqlfluff",
 				},
 			},
 		},

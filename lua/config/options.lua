@@ -48,8 +48,3 @@ end
 for key, value in pairs(global_options) do
   vim.g[key] = value
 end
-
-vim.diagnostic.config({
-  -- virtual_lines = true,
-  virtual_text = true
-})
