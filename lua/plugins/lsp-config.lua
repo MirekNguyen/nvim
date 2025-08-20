@@ -17,7 +17,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 return {
 	"neovim/nvim-lspconfig",
-	event = { "BufReadPost", "BufNewFile" },
+	event = { "BufReadPre", "BufNewFile" },
 	cmd = { "Mason", "LspInstall", "LspUninstall", "LspInfo" },
 	dependencies = {
 		{
