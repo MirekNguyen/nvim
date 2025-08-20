@@ -18,7 +18,7 @@ return {
 			typescript = { "prettierd", "eslint_d" },
 			javascriptreact = { "prettierd", "eslint_d" },
 			typescriptreact = { "prettierd", "eslint_d" },
-			sh = { "shellharden", "shfmt" },
+			sh = { "shfmt" },
 			php = { "phpcbf" },
 			sql = { "sql_formatter" },
 			markdown = { "mdformat" },
