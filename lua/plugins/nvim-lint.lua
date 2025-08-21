@@ -6,7 +6,7 @@ return {
 		lint.linters_by_ft = {
 			sh = { "shellcheck", "bash" },
 			php = { "phpstan", "phpcs" },
-			sql = { "sqlfluff" },
+			-- sql = { "sqlfluff" },
 			markdown = { "markdownlint" },
 			kotlin = { "ktlint" },
 			dotenv = { "dotenv_linter" },
