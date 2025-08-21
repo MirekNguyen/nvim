@@ -11,6 +11,8 @@ keymap.set("v", "<leader>y", '"+y', opts)
 keymap.set("v", "<leader>d", '"+d', opts)
 keymap.set("v", "<leader>p", '"+p', opts)
 keymap.set("v", "<leader>P", '"+P', opts)
+-- keymap.set("n", "<c-[>", '<cmd>bprev<cr>', opts)
+-- keymap.set("n", "<c-]>", '<cmd>bnext<cr>', opts)
 
 vim.api.nvim_create_user_command("ToggleInlayHint", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
