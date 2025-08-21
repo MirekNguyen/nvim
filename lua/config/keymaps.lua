@@ -11,12 +11,3 @@ keymap.set("v", "<leader>y", '"+y', opts)
 keymap.set("v", "<leader>d", '"+d', opts)
 keymap.set("v", "<leader>p", '"+p', opts)
 keymap.set("v", "<leader>P", '"+P', opts)
-
-vim.api.nvim_create_user_command("ToggleInlayHint", function()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end, {})
-
-keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
-keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
-keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
-keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
