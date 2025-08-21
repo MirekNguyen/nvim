@@ -59,8 +59,6 @@ return {
 					"tailwindcss",
 					"jsonls",
 					"yamlls",
-
-					"sqlfluff",
 				},
 			},
 		},
