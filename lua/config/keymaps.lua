@@ -16,14 +16,6 @@ vim.api.nvim_create_user_command("ToggleInlayHint", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, {})
 
-vim.api.nvim_create_user_command("TSImport", function()
-  vim.lsp.buf.code_action({ apply = true, context = { only = { "source.addMissingImports.ts" } } })
-end, {})
-
-vim.api.nvim_create_user_command("TSRemove", function()
-  vim.lsp.buf.code_action({ apply = true, context = { only = { "source.removeUnusedImports.ts", "source.removeUnused.ts" } } })
-end, {})
-
 keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
 keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
 keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
