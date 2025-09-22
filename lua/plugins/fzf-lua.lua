@@ -6,7 +6,6 @@ return {
 		{ "<D-l>", "<cmd>FzfLua git_files winopts.preview.layout=vertical<CR>", desc = "Find git files" },
     { "<D-L>", "<cmd>FzfLua grep_project winopts.preview.layout=vertical<CR>", desc = "Live grep" },
     { "<D-k>", "<cmd>FzfLua buffers<CR>", desc = "List buffers" },
-
   },
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {

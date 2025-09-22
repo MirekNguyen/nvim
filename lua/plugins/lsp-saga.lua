@@ -16,7 +16,7 @@ return {
     { "gi", "<cmd>Lspsaga finder imp<CR>" },
     { "M",  "<cmd>Lspsaga show_line_diagnostics<CR>" },
   },
-  config = {
+  opts = {
     symbol_in_winbar = {
       enable = false,
     },
