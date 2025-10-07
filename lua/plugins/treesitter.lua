@@ -35,6 +35,7 @@ local tsconfig = {
     "graphql",
     "go",
     "nix",
+    "swift",
   },
 	highlight = {
 		enable = true,

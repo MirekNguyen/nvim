@@ -64,8 +64,6 @@ return {
 					"tailwindcss",
 					"jsonls",
 					"yamlls",
-					
-					-- "denols",
 				},
 			},
 		},

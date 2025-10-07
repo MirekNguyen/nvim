@@ -7,9 +7,10 @@ return {
 			sh = { "shellcheck", "bash" },
 			php = { "phpstan", "phpcs" },
 			-- sql = { "sqlfluff" },
-			markdown = { "markdownlint" },
+			-- markdown = { "markdownlint" },
 			kotlin = { "ktlint" },
 			dotenv = { "dotenv_linter" },
+			swift = { "swiftlint" },
 		}
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
