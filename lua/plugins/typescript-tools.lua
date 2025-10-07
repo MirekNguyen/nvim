@@ -8,27 +8,5 @@ return {
 		"typescript",
 		"typescriptreact",
 	},
-	opts = {
-		settings = {
-			tsserver_file_preferences = {
-				-- includeInlayParameterNameHints = "all",
-				-- includeInlayVariableTypeHints = true,
-				includeInlayFunctionParameterTypeHints = true,
-				-- includeInlayPropertyDeclarationTypeHints = true,
-				includeInlayFunctionLikeReturnTypeHints = true,
-				-- includeInlayEnumMemberValueHints = true,
-			},
-			typescript = {
-				inlayHints = {
-					includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'
-					includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-					includeInlayFunctionParameterTypeHints = true,
-					includeInlayVariableTypeHints = true,
-					includeInlayPropertyDeclarationTypeHints = true,
-					includeInlayFunctionLikeReturnTypeHints = true,
-					includeInlayEnumMemberValueHints = true,
-				},
-			},
-		},
-	},
+	opts = {},
 }
