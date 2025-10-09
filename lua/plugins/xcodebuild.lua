@@ -9,7 +9,7 @@ return {
   keys = {
 		{
 			"<leader>o",
-			"<cmd>XcodebuildRun<cr>",
+			"<cmd>XcodebuildBuildRun<cr>",
 			desc = "Debug diagnostic with AI",
 		},
   },
