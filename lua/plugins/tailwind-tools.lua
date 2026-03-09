@@ -1,12 +1,16 @@
-return {
-	"luckasRanarison/tailwind-tools.nvim",
-	name = "tailwind-tools",
-	build = ":UpdateRemotePlugins",
-	ft = {
-		"javascript",
-		"javascriptreact",
-		"typescript",
-		"typescriptreact",
-	},
-	opts = {},
-}
+-- Disabled: uses deprecated require('lspconfig') framework.
+-- Tailwind LSP still works via lsp/tailwindcss.lua config.
+-- Re-enable once tailwind-tools updates to vim.lsp.config.
+-- return {
+-- 	"luckasRanarison/tailwind-tools.nvim",
+-- 	name = "tailwind-tools",
+-- 	build = ":UpdateRemotePlugins",
+-- 	ft = {
+-- 		"javascript",
+-- 		"javascriptreact",
+-- 		"typescript",
+-- 		"typescriptreact",
+-- 	},
+-- 	opts = {},
+-- }
+return {}
