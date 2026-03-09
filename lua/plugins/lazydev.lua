@@ -2,6 +2,10 @@ return {
 	{
 		"folke/lazydev.nvim",
 		ft = "lua",
-		opts = {},
+		opts = {
+			library = {
+				{ path = "nvim-dap-ui", words = { "dap" } },
+			},
+		},
 	},
 }
