@@ -43,6 +43,7 @@ local nvim_dap = {
 			}
 		end
 	end,
+
 	dependencies = {
 		{
 			"microsoft/vscode-js-debug",
@@ -94,5 +95,4 @@ return {
 			{ "theHamsta/nvim-dap-virtual-text", opts = {} },
 		},
 	},
-	{ "folke/neodev.nvim", opts = { library = { plugins = { "nvim-dap-ui" }, types = true } } },
 }
